@@ -25,10 +25,6 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 	
 	private Button btnRelatar = new Button("Relatar");
 	private Label lblTitulo1 = new Label("Relatar Erro");
-	private Label lblTitulo2 = new Label("Nome");
-	private Label lblTitulo3 = new Label("Email");
-	private Label lblTitulo4 = new Label("Comentário");
-	private Label lblTitulo5 = new Label("Categoria");
 	private ComboBox<String> cmb_tipo = new ComboBox<String>();
 	private TextField txtnome = new TextField();
 	private TextField txtemail = new TextField();
@@ -42,10 +38,6 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		Scene scene = new Scene(principal, 480, 500);
 		palco.setTitle("Tela - Relatar Erro");
 		principal.getChildren().add(lblTitulo1);
-		principal.getChildren().add(lblTitulo2);
-		principal.getChildren().add(lblTitulo3);
-		principal.getChildren().add(lblTitulo4);
-		principal.getChildren().add(lblTitulo5);
 		principal.getChildren().add(txtnome);
 		principal.getChildren().add(txtemail);
 		principal.getChildren().add(txtcomentario);
@@ -53,31 +45,23 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		principal.getChildren().add(btnRelatar);
 		lblTitulo1.setTranslateY(10);
 		lblTitulo1.setTranslateX(180);
-		lblTitulo2.setTranslateY(40);
-		lblTitulo2.setTranslateX(18);
-		lblTitulo3.setTranslateY(80);
-		lblTitulo3.setTranslateX(18);
-		lblTitulo4.setTranslateY(180);
-		lblTitulo4.setTranslateX(18);
-		lblTitulo5.setTranslateY(100);
-		lblTitulo5.setTranslateX(18);
 		txtnome.setFocusTraversable(false);
-		txtnome.setTranslateY(-30);
-		txtnome.setTranslateX(100);
+		txtnome.setTranslateY(50);
+		txtnome.setTranslateX(135);
 		txtnome.setMaxWidth(200);
 		txtemail.setFocusTraversable(false);
-		txtemail.setTranslateY(0);
-		txtemail.setTranslateX(100);
+		txtemail.setTranslateY(80);
+		txtemail.setTranslateX(135);
 		txtemail.setMaxWidth(200);
 		txtcomentario.setFocusTraversable(false);
-		txtcomentario.setTranslateY(100);
-		txtcomentario.setTranslateX(100);
+		txtcomentario.setTranslateY(160);
+		txtcomentario.setTranslateX(135);
 		txtcomentario.setMaxWidth(200);
 		cmb_tipo.setFocusTraversable(false);
-		cmb_tipo.setTranslateY(-150);
-		cmb_tipo.setTranslateX(100);
+		cmb_tipo.setTranslateY(-80);
+		cmb_tipo.setTranslateX(135);
 		btnRelatar.setFocusTraversable(false);
-		btnRelatar.setTranslateY(100);
+		btnRelatar.setTranslateY(160);
 		btnRelatar.setTranslateX(200);
 		palco.setScene(scene);
 		btnRelatar.setOnAction(this);
@@ -89,6 +73,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		txtemail.setPromptText("Insira o seu email");
 		txtcomentario.setPromptText("Deixe o seu feedbck ...");
 		txtcomentario.setWrapText(true);
+		cmb_tipo.setPromptText("Categoria");
 		palco.show();
 
 	}
