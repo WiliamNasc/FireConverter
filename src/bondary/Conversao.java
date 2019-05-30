@@ -50,7 +50,7 @@ public class Conversao extends Application implements EventHandler<ActionEvent> 
 	    btnConverte.setTranslateX(200);
 		palco.setScene(scene);
 		btnConverte.setOnAction(this);
-		extenssao.getItems().addAll("AVI",
+		extenssao.getItems().addAll("AVI", 
 									"Mp4",
 									"Mkv");
 		palco.show();
