@@ -1,5 +1,7 @@
 package bondary;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Converter_Audio extends Application implements EventHandler<ActionEvent> {
@@ -22,7 +25,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 	private Label lblTitulo2 = new Label("Extenção");
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
-
+	private File arquivo = null;
 
 	@Override
 	public void start(Stage palco) throws Exception {
@@ -39,9 +42,10 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		lblTitulo1.setTranslateY(10);
 		lblTitulo1.setTranslateX(180);
 		txt_Arquivo.setTranslateY(2);
-		txt_Arquivo.setTranslateX(0);
-		btnSeleciona.setTranslateY(10);
-		btnSeleciona.setTranslateX(180);
+		txt_Arquivo.setTranslateX(18);
+		txt_Arquivo.setMaxSize(320, 0);
+		btnSeleciona.setTranslateY(-23);
+		btnSeleciona.setTranslateX(350);
 		lblTitulo2.setTranslateY(150);
 		lblTitulo2.setTranslateX(18);
 		extenssao.setTranslateY(130);
@@ -49,6 +53,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		btnConverte.setTranslateY(200);
 	    btnConverte.setTranslateX(200);
 		palco.setScene(scene);
+		btnSeleciona.setOnAction(this);
 		btnConverte.setOnAction(this);
 		extenssao.getItems().addAll("Mp3", 
 									"Mp4");
@@ -66,16 +71,26 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 	}
 
 // help -  https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
+// https://www.youtube.com/watch?v=-JJQL42WLk8
+// https://www.guj.com.br/t/quebra-de-linha-automatica-resolvido/128227
 	
 	@Override
 	public void handle(ActionEvent event) {
-		
-		if (event.getTarget() == btnConverte) { 
+
+		if (event.getTarget() == btnSeleciona) { 
 			
-			System.out.println(extenssao.getValue());
+			
+			FileChooser fc = new FileChooser();
+			arquivo = fc.showOpenDialog(null);
+			txt_Arquivo.setText(arquivo.toString());
+			
+		} else if (event.getTarget() == btnConverte){
+			
 			System.out.println("Arquivo Convertido com Sucesso !!!");
+			System.out.println("Endereço do arquivo: " + " " + arquivo.toString());
 			
-		} 
+			
+		}
 		
 	}
 	
