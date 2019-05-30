@@ -3,18 +3,15 @@ package bondary;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Conversao extends Application implements EventHandler<ActionEvent> {
+public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
 	private ComboBox<String> extenssao = new ComboBox<>();
 	private Button btnConverte = new Button("Converter");
@@ -53,6 +50,7 @@ public class Conversao extends Application implements EventHandler<ActionEvent> 
 		extenssao.getItems().addAll("AVI", 
 									"Mp4",
 									"Mkv");
+		txt_Arquivo.setPromptText("Endereço do arquivo");
 		palco.show();
 		
 	}
@@ -70,7 +68,7 @@ public class Conversao extends Application implements EventHandler<ActionEvent> 
 		
 		if (event.getTarget() == btnConverte) { 
 			
-			System.out.println(extenssao.getItems().get(2));
+			System.out.println(extenssao.getValue());
 			System.out.println("Arquivo Convertido com Sucesso !!!");
 			
 		} 
