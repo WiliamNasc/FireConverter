@@ -82,6 +82,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		txtnome.setPromptText("Insira o seu nome");
 		txtemail.setPromptText("Insira o seu email");
 		txtcomentario.setPromptText("Deixe o seu feedbck ...");
+		txtcomentario.setWrapText(true);
 		palco.show();
 
 	}
