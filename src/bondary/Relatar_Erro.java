@@ -10,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 // Ctrl + Shift + f = para identar.
@@ -34,6 +37,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 	@Override
 	public void start(Stage palco) throws Exception {
 
+		
 		VBox principal = new VBox();
 		Scene scene = new Scene(principal, 480, 500);
 		palco.setTitle("Tela - Relatar Erro");
@@ -47,8 +51,8 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		principal.getChildren().add(txtcomentario);
 		principal.getChildren().add(cmb_tipo);
 		principal.getChildren().add(btnRelatar);
-		lblTitulo1.setTranslateY(1);
-		lblTitulo1.setTranslateX(200);
+		lblTitulo1.setTranslateY(10);
+		lblTitulo1.setTranslateX(180);
 		lblTitulo2.setTranslateY(40);
 		lblTitulo2.setTranslateX(18);
 		lblTitulo3.setTranslateY(80);
@@ -79,6 +83,8 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 		btnRelatar.setOnAction(this);
 		cmb_tipo.getItems().addAll("Áudio",
 								"Vídeo");
+		lblTitulo1.setFont(Font.font("Verdana",
+				FontWeight.BOLD , FontPosture.ITALIC, 15));
 		txtnome.setPromptText("Insira o seu nome");
 		txtemail.setPromptText("Insira o seu email");
 		txtcomentario.setPromptText("Deixe o seu feedbck ...");

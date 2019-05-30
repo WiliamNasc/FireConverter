@@ -9,6 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
@@ -33,8 +36,8 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		principal.getChildren().add(txt_Arquivo);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
-		lblTitulo1.setTranslateY(1);
-		lblTitulo1.setTranslateX(200);
+		lblTitulo1.setTranslateY(10);
+		lblTitulo1.setTranslateX(180);
 		txt_Arquivo.setTranslateY(2);
 		txt_Arquivo.setTranslateX(0);
 		btnSeleciona.setTranslateY(10);
@@ -50,6 +53,8 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		extenssao.getItems().addAll("AVI", 
 									"Mp4",
 									"Mkv");
+		lblTitulo1.setFont(Font.font("Verdana",
+				FontWeight.BOLD , FontPosture.ITALIC, 15));
 		txt_Arquivo.setPromptText("Endereço do arquivo");
 		palco.show();
 		
