@@ -18,6 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Video;
+import persistence.VideoDao;
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
@@ -29,6 +30,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
 	FileChooser fc = new FileChooser();
+	VideoDao vd = new VideoDao();
 	
 	
 	@Override
@@ -101,12 +103,16 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			
 		} else if (event.getTarget() == btnConverte){
 			
-			Stage palco = new Stage();
+			/*Stage palco = new Stage();
 			System.out.println("Arquivo Convertido com Sucesso !!!");
 			System.out.println("Endereço do arquivo: " + " " + arquivo.toString());
 			Menu m = new Menu();
+*/			
+			vd.add_formato(extenssao.getValue(),
+					txt_Arquivo.getText());
+			vd.ver();
 			try {
-				m.voltar(palco);
+				//m.voltar(palco);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

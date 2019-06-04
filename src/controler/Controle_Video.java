@@ -36,7 +36,7 @@ public class Controle_Video {
 		extensao.getItems().addAll("AVI", "Mkv", "Mp4");
 		lVideo.add(txtarquivo.getText());
 		v.setlVideo(lVideo);
-		System.out.println(v.getlVideo());
+		//System.out.println(v.getlVideo());
 
 	}
 
