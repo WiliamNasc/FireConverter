@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 
 public class Biblioteca_de_Erros extends Application {
 
-	//private ComboBox<String> cbErros = new ComboBox<String>();
 	private TextArea taErros = new TextArea();
 	private Button btnVoltar = new Button("Voltar");
 	private Button btnSim = new Button("Sim");
@@ -39,11 +38,6 @@ public class Biblioteca_de_Erros extends Application {
 		
 		Pane tela = new Pane();
 		Scene scn = new Scene(tela, 480, 320);
-
-		
-		/*cbErros.getItems().addAll("Erro 404","Erro 403","Erro 500");
-		cbErros.setPromptText("--Selecione o erro--");
-		cbErros.relocate(175, 20);*/
 		
 		taErros.setEditable(false);
 		taErros.setWrapText(true);
@@ -64,7 +58,6 @@ public class Biblioteca_de_Erros extends Application {
 		btnVoltar.setTranslateX(365);
 		btnVoltar.setTranslateY(265);
 		
-		//tela.getChildren().add(cbErros);
 		tela.getChildren().add(taErros);
 		tela.getChildren().add(lblTitulo1);
 		tela.getChildren().add(lblAjuda);
@@ -74,7 +67,7 @@ public class Biblioteca_de_Erros extends Application {
 		tela.setBackground(new Background(myBI));
 
 		
-		stage.setTitle("Biblioteca de Erros");
+		stage.setTitle("Tela - Biblioteca de Erros");
 		stage.setScene(scn);
 		stage.setMinHeight(320);
 		stage.setMinWidth(480);

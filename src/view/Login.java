@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -41,7 +40,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 		VBox principal = new VBox();
 		Scene scene = new Scene(principal, 480, 330);
-		palco.setTitle("Tela - Relatar Erro");
+		palco.setTitle("Tela - Login");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(txtemail);
 		principal.getChildren().add(txtchave);

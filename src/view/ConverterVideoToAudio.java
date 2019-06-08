@@ -23,6 +23,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ConverterVideoToAudio extends Application implements EventHandler<ActionEvent> {
 
@@ -33,6 +34,7 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
+	FileChooser fc = new FileChooser();
 
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -81,12 +83,10 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 
 		extenssao.getItems().addAll("Mp3", "Mp4");
 
-		lblTitulo1.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 20));
+		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
-		
-		lblTitulo2.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 15));
+
+		lblTitulo2.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 15));
 		lblTitulo2.setTextFill(Color.web("#6b6b6b"));
 
 		txt_Arquivo.setPromptText("Endereço do arquivo");
@@ -102,14 +102,18 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 	}
 
 	// help - https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
+//	https://www.programcreek.com/java-api-examples/?api=javafx.stage.FileChooser.ExtensionFilter
 
 	@Override
 	public void handle(ActionEvent event) {
 
 		if (event.getTarget() == btnSeleciona) {
 
-			FileChooser fc = new FileChooser();
+			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"),
+											new ExtensionFilter("MP4", "*.mp4"));
+
 			arquivo = fc.showOpenDialog(null);
+
 			txt_Arquivo.setText(arquivo.toString());
 
 		} else if (event.getTarget() == btnConverte) {

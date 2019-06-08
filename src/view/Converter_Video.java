@@ -23,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import persistence.VideoDao;
 
@@ -84,10 +85,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		
 		btnSeleciona.setOnAction(this);
 		btnConverte.setOnAction(this);
-//		
-//		extenssao.getItems().addAll("AVI", 
-//									"Mp4",
-//									"Mkv");
+
 		
 		lblTitulo1.setFont(Font.font("Righteous",
 				FontWeight.BOLD , FontPosture.ITALIC, 20));
@@ -119,6 +117,9 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		
 		if (event.getTarget() == btnSeleciona) { 
 			
+			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"),
+											new ExtensionFilter("MP4", "*.mp4"));
+			
 			arquivo = fc.showOpenDialog(null);
 			txt_Arquivo.setText(arquivo.toString());
 			Controle_Video c = new Controle_Video(extenssao, txt_Arquivo);
@@ -126,18 +127,14 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			
 		} else if (event.getTarget() == btnConverte){
 			
-			/*Stage palco = new Stage();
-			System.out.println("Arquivo Convertido com Sucesso !!!");
-			System.out.println("Endereço do arquivo: " + " " + arquivo.toString());
-			Menu m = new Menu();
-*/			
 			vd.add_formato(extenssao.getValue(),
 					txt_Arquivo.getText());
 			vd.ver();
+			
 			try {
-				//m.voltar(palco);
+				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
