@@ -3,10 +3,16 @@ package view;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -22,9 +28,15 @@ public class Biblioteca_de_Erros extends Application {
 	private Button btnNao = new Button("Não");
 	private Label lblAjuda = new Label("Isso te ajudou?");
 	private Label lblTitulo1 = new Label("Biblioteca de Erros");
+	
+	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
+	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+	          BackgroundSize.DEFAULT);
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		
+		
 		Pane tela = new Pane();
 		Scene scn = new Scene(tela, 480, 320);
 
@@ -59,12 +71,25 @@ public class Biblioteca_de_Erros extends Application {
 		tela.getChildren().add(btnSim);
 		tela.getChildren().add(btnNao);
 		tela.getChildren().add(btnVoltar);
+		tela.setBackground(new Background(myBI));
 
 		
 		stage.setTitle("Biblioteca de Erros");
 		stage.setScene(scn);
-		lblTitulo1.setFont(Font.font("Verdana",
+		stage.setMinHeight(320);
+		stage.setMinWidth(480);
+		stage.setResizable(false);
+		
+		
+		lblTitulo1.setFont(Font.font("Righteous",
+				FontWeight.BOLD , FontPosture.ITALIC, 20));
+		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
+		
+		lblAjuda.setFont(Font.font("Righteous",
 				FontWeight.BOLD , FontPosture.ITALIC, 15));
+		lblAjuda.setTextFill(Color.web("#6b6b6b"));
+		
+		
 		stage.show();
 	}
 

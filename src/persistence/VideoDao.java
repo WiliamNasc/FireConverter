@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import net.sourceforge.jtds.jdbc.*;
 
 public class VideoDao implements IVideoDAO {
 	
@@ -32,8 +33,9 @@ public class VideoDao implements IVideoDAO {
 	@Override
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("net.sourceforge.jtds.jdbc.Driver");
-		c = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433;DatabaseName=DB_FIRECONVERT;namedPipes=true,",
-		"(local)", "w29441081");
+		c = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/DB_FIRECONVERT",
+		"wil", "123");
+		System.out.println("Ok");
 		return c;
 	}
 	
@@ -41,6 +43,7 @@ public class VideoDao implements IVideoDAO {
 		VideoDao vd = new VideoDao();
 		try {
 			vd.getConnection();
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();

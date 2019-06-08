@@ -8,8 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -25,10 +32,14 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 	private Button btnEnviar = new Button("Enviar");
 	private Label lblTitulo1 = new Label("Novo formato");
 	
+	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
+	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+	          BackgroundSize.DEFAULT);
+	
 	@Override
 	public void start(Stage stage) throws Exception {
 		Pane tela = new Pane();
-		Scene scn = new Scene(tela, 480,320);
+		Scene scn = new Scene(tela, 480,330);
 		
 		lblTitulo1.setFont(Font.font("Verdana",
 				FontWeight.BOLD , FontPosture.ITALIC, 15));
@@ -55,7 +66,7 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 
 		cbCategoria.setFocusTraversable(false);
 		cbCategoria.setTranslateX(80);
-		cbCategoria.setTranslateY(220);
+		cbCategoria.setTranslateY(230);
 
 		btnEnviar.setFocusTraversable(false);
 		btnEnviar.setTranslateX(200);
@@ -68,10 +79,23 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 		tela.getChildren().add(cbCategoria);
 		tela.getChildren().add(btnEnviar);
 		tela.getChildren().add(lblTitulo1);
+		tela.setBackground(new Background(myBI));
 		
-		
-		stage.setTitle("Inserir novo formato");
+		stage.setTitle("Tela - Novo formato");
 		stage.setScene(scn);
+		
+		lblTitulo1.setFont(Font.font("Righteous",
+				FontWeight.BOLD , FontPosture.ITALIC, 20));
+		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
+		
+		cbCategoria.setFont(Font.font("Righteous",
+				FontWeight.BOLD , FontPosture.ITALIC, 15));
+		cbCategoria.setTextFill(Color.web("#6b6b6b"));
+		
+		cbPadrao.setFont(Font.font("Righteous",
+				FontWeight.BOLD , FontPosture.ITALIC, 15));
+		cbPadrao.setTextFill(Color.web("#6b6b6b"));
+		
 		stage.show();
 	}
 
