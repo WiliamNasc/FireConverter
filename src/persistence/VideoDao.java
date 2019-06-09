@@ -9,6 +9,8 @@ import java.util.List;
 
 public class VideoDao implements IVideoDAO {
 	
+	// https://www.youtube.com/watch?v=YhJwPckaoiM
+	
 	List<String> video = new ArrayList<String>();
 	
 	private Connection c;
@@ -32,10 +34,10 @@ public class VideoDao implements IVideoDAO {
 
 	@Override
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("net.sourceforge.jtds.jdbc.Driver");
-		c = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/DB_FIRECONVERT",
-		"wil", "123");
-		System.out.println("Ok");
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		c = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=DB_FIRECONVERTER",
+		"sa", "123");
+		System.out.println("Conectou, Porra!!!");
 		return c;
 	}
 	
