@@ -27,12 +27,13 @@ import javafx.stage.Stage;
 
 public class Login extends Application implements EventHandler<ActionEvent> {
 
-	private Button btnRelatar = new Button("Entrar");
+	private Button btnEntrar = new Button("Entrar");
 	private Label lblTitulo1 = new Label("LOGIN");
 	private TextField txtemail = new TextField();
 	private TextField txtchave = new TextField();
+	private Menu_Principal menu_p = new Menu_Principal();
 
-	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
+	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 	@Override
@@ -44,7 +45,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(txtemail);
 		principal.getChildren().add(txtchave);
-		principal.getChildren().add(btnRelatar);
+		principal.getChildren().add(btnEntrar);
 		principal.setBackground(new Background(myBI));
 
 		palco.setMinHeight(320);
@@ -67,13 +68,13 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 		txtchave.setMaxWidth(200);
 
 
-		btnRelatar.setFocusTraversable(false);
-		btnRelatar.setTranslateY(160);
-		btnRelatar.setTranslateX(200);
+		btnEntrar.setFocusTraversable(false);
+		btnEntrar.setTranslateY(160);
+		btnEntrar.setTranslateX(200);
 
 		palco.setScene(scene);
 
-		btnRelatar.setOnAction(this);
+		btnEntrar.setOnAction(this);
 
 		
 
@@ -104,9 +105,15 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 
-		if (event.getTarget() == btnRelatar) {
+		if (event.getTarget() == btnEntrar) {
 
-			System.out.println("Arquivo Convertido com Sucesso !!!");
+			try {
+				
+				menu_p.start(new Stage());
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 
 		}
 

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import net.sourceforge.jtds.jdbc.*;
+
 
 public class VideoDao implements IVideoDAO {
 	
@@ -13,10 +13,10 @@ public class VideoDao implements IVideoDAO {
 	
 	private Connection c;
 	
-	public void add_formato (String a, String b){
+	public void add_formato (String formato, String endereco){
 		
-		video.add("Formato: " + a);
-		video.add("Endereço: " + b);
+		video.add("Formato: " + formato);
+		video.add("Endereço: " + endereco);
 		
 	}
 	
@@ -45,8 +45,7 @@ public class VideoDao implements IVideoDAO {
 			vd.getConnection();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-//			e.printStackTrace();
+	
 			System.out.println(e.getMessage());
 		}
 	}

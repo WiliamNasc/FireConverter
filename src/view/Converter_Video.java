@@ -36,10 +36,10 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
-	FileChooser fc = new FileChooser();
-	VideoDao vd = new VideoDao();
+	private FileChooser fc = new FileChooser();
+	private VideoDao vd = new VideoDao();
 	
-	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
+	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 	          BackgroundSize.DEFAULT);
 	
