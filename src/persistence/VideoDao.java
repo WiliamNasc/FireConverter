@@ -11,6 +11,7 @@ public class VideoDao implements IVideoDAO {
 	
 	// video - https://www.youtube.com/watch?v=YhJwPckaoiM
 	// site - https://www.sqlfromhell.com/alterando-as-portas-de-conexao-do-sql-server/
+	// video crud - https://www.youtube.com/watch?v=vH1Z5tv8fCk
 	
 	List<String> video = new ArrayList<String>();
 	
