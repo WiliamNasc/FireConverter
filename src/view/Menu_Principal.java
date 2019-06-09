@@ -25,6 +25,8 @@ import javafx.stage.Stage;
 
 public class Menu_Principal extends Application implements EventHandler<ActionEvent> {
 
+	// https://docs.oracle.com/javafx/2/api/javafx/scene/control/MenuItem.html
+	
 	private Label lblTitulo1 = new Label("Menu");
 	
 	private MenuBar menubar = new MenuBar();
