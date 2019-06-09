@@ -3,7 +3,7 @@ package persistence;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface IVideoDAO {
+public interface IConexaoDao {
 	
 	public Connection getConnection() throws ClassNotFoundException, SQLException;
 

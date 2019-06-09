@@ -7,6 +7,16 @@ public class Video {
 	
 	private String endereco;
 	private String extensao = "Mp4 /n Mkv";
+	private int cod_v;
+	
+	
+	public int getCod_v() {
+		return cod_v;
+	}
+	public void setCod_v(int cod_v) {
+		this.cod_v = cod_v;
+	}
+
 	List<String> lVideo = new ArrayList<String>();
 	
 	

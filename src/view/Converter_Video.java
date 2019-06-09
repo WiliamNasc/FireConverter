@@ -25,7 +25,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import persistence.VideoDao;
+import persistence.ConexaoDao;
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
@@ -37,7 +37,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
 	private FileChooser fc = new FileChooser();
-	private VideoDao vd = new VideoDao();
+	private ConexaoDao vd = new ConexaoDao();
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
