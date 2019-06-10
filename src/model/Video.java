@@ -6,7 +6,7 @@ import java.util.List;
 public class Video {
 	
 	private String endereco;
-	private String extensao = "Mp4 /n Mkv";
+	private String extensao;
 	private int cod_v;
 	
 	

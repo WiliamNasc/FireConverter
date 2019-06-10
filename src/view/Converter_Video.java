@@ -25,11 +25,12 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import model.Video;
 import persistence.ConexaoDao;
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
-	private ComboBox<String> extenssao = new ComboBox<String>();
+	private ComboBox<Video> extenssao = new ComboBox<Video>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Vídeo");
 	private Label lblTitulo2 = new Label("Extenção");
@@ -122,14 +123,15 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			
 			arquivo = fc.showOpenDialog(null);
 			txt_Arquivo.setText(arquivo.toString());
-			Controle_Video c = new Controle_Video(extenssao, txt_Arquivo);
-			c.listaVideo();
+		    Controle_Video cv = new Controle_Video(extenssao);
+		    cv.listaextensao();
+
 			
 		} else if (event.getTarget() == btnConverte){
 			
-			vd.add_formato(extenssao.getValue(),
-					txt_Arquivo.getText());
-			vd.ver();
+//			vd.add_formato(extenssao.getValue(),
+//					txt_Arquivo.getText());
+//			vd.ver();
 			
 			try {
 				
