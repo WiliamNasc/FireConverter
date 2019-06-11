@@ -7,65 +7,60 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Video;
+import model.Formato;
 
 
-public class VideoDao implements IVideoDao {
+public class FormatoDao implements IFormatoDao {
 	
-	private Connection conexao;
+private Connection conexao;
 	
-	public VideoDao() throws ClassNotFoundException, SQLException {
+	public FormatoDao() throws ClassNotFoundException, SQLException {
 		
 		IConexaoDao conexaod = new ConexaoDao();
 		conexao = conexaod.getConnection();
 	}
 
 	@Override
-	public void inserir_v(Video video) throws SQLException {
+	public void inserir_v(Formato video) throws SQLException {
 		
-		String sql = "INSERT INTO VIDEO (ENDERECO,EXTENSAO) VALUES (?,?)";
+		String sql = "INSERT INTO FORMATO (EXTENSAO) VALUES (?)";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		//ps.setInt(1, video.getCod_v());
-		ps.setString(1, video.getEndereco());
+		ps.setString(1, video.getExtensao());
+		ps.execute();
+		ps.close();
+	}
+
+	@Override
+	public void alterar_v(Formato video) throws SQLException {
+		
+		String sql = "UPDATE FORMATO SET EXTENSAO = ? WHERE COD_FORM = ?";
+		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(2, video.getExtensao());
 		ps.execute();
 		ps.close();
-	}
-
-	@Override
-	public void alterar_v(Video video) throws SQLException {
-		
-		String sql = "UPDATE VIDEO SET ENDERECO = ?, EXTENSAO = ? WHERE COD_V = ?";
-		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setString(1, video.getEndereco());
-		ps.setString(2, video.getExtensao());
-		ps.setInt(3, video.getCod_v());
-		ps.execute();
-		ps.close();
 		
 	}
 
 	@Override
-	public void excluir_v(Video video) throws SQLException {
+	public void excluir_v(Formato video) throws SQLException {
 		
-		String sql = "DELETE VIDEO WHERE COD_V = ?";
+		String sql = "DELETE FORMATO WHERE COD_FORM = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, video.getCod_v());
+		//ps.setInt(1, video.getCod_v());
 		ps.execute();
 		ps.close();
 	}
 
 	@Override
-	public Video consultar_v(Video video) throws SQLException {
+	public Formato consultar_v(Formato video) throws SQLException {
 		
-		String sql = "SELECT COD_V,ENDERECO,EXTENSAO FROM VIDEO WHERE COD_V = ?";
+		String sql = "SELECT COD_FORM,EXTENSAO FROM FORMATO WHERE COD_FORM = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, video.getCod_v());
+		//ps.setInt(1, video.getCod_v());
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
 			
-			video.setCod_v(rs.getInt("COD_V"));
-			video.setEndereco(rs.getString("ENDERECO"));
 			video.setExtensao(rs.getString("EXETENSAO"));
 		}
 		
@@ -76,15 +71,15 @@ public class VideoDao implements IVideoDao {
 	}
 
 	@Override
-	public List<Video> consultar_v() throws SQLException {
+	public List<Formato> consultar_v() throws SQLException {
 		
-		List<Video> listaExtensao = new ArrayList<Video>();
-		String sql = "SELECT EXTENSAO FROM VIDEO";
+		List<Formato> listaExtensao = new ArrayList<Formato>();
+		String sql = "SELECT EXTENSAO FROM FORMATO";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
 			
-			Video video = new Video();
+			Formato video = new Formato();
 			video.setExtensao(rs.getString("EXTENSAO"));
 			listaExtensao.add(video);
 		}
@@ -98,12 +93,12 @@ public class VideoDao implements IVideoDao {
 	@Override
 	public int proximoCod_V() throws SQLException {
 		
-		String sql = "SELECT MAX(COD_V) + 1 AS PROXIMO_COD_V WHERE VIDEO";
+		String sql = "SELECT MAX(COD_FORM) + 1 AS PROXIMO_COD_FORM WHERE FORMATO";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
 			
-			return rs.getInt("PROXIMO_COD_V");
+			return rs.getInt("PROXIMO_COD_FORM");
 		
 		}else{
 			return 1;
@@ -111,7 +106,5 @@ public class VideoDao implements IVideoDao {
 		
 		
 	}
-	
-	
 
 }

@@ -1,5 +1,6 @@
 package view;
 
+import controler.Controle_Formato;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.Formato;
 
 
 public class Novo_Formato extends Application implements EventHandler<ActionEvent>{
@@ -107,10 +109,9 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 	public void handle(ActionEvent event){
 		
 		if(event.getTarget() == btnEnviar) {
-			System.out.println(txFormato.getText());
-			System.out.println(taDescricao.getText());
-			System.out.println(cbPadrao.isSelected());
-			System.out.println(cbCategoria.isSelected());
+			
+			Controle_Formato cf = new Controle_Formato(txFormato);
+			cf.inserirInfo_V();
 		}
 		
 	}

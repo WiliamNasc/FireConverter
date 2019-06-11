@@ -26,7 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.Video;
-import persistence.ConexaoDao;
+
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
@@ -34,11 +34,11 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Vídeo");
 	private Label lblTitulo2 = new Label("Extenção");
-	private TextField txt_Arquivo = new TextField();
+	private TextField txtendereco = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
 	private FileChooser fc = new FileChooser();
-	private ConexaoDao vd = new ConexaoDao();
+
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -54,7 +54,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	    principal.getChildren().add(lblTitulo1);
 	    principal.getChildren().add(lblTitulo2);
 		principal.getChildren().add(extenssao);
-		principal.getChildren().add(txt_Arquivo);
+		principal.getChildren().add(txtendereco);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
 		principal.setBackground(new Background(myBI));
@@ -66,9 +66,9 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		lblTitulo1.setTranslateY(10);
 		lblTitulo1.setTranslateX(180);
 		
-		txt_Arquivo.setTranslateY(2);
-		txt_Arquivo.setTranslateX(18);
-		txt_Arquivo.setMaxSize(320, 0);
+		txtendereco.setTranslateY(2);
+		txtendereco.setTranslateX(18);
+		txtendereco.setMaxSize(320, 0);
 		
 		btnSeleciona.setTranslateY(-23);
 		btnSeleciona.setTranslateX(350);
@@ -96,7 +96,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 				FontWeight.BOLD , FontPosture.ITALIC, 15));
 		lblTitulo2.setTextFill(Color.web("#6b6b6b"));
 		
-		txt_Arquivo.setPromptText("Endereço do arquivo");
+		txtendereco.setPromptText("Endereço do arquivo");
 		
 		
 		
@@ -122,7 +122,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 											new ExtensionFilter("MP4", "*.mp4"));
 			
 			arquivo = fc.showOpenDialog(null);
-			txt_Arquivo.setText(arquivo.toString());
+			txtendereco.setText(arquivo.toString());
 		    Controle_Video cv = new Controle_Video(extenssao);
 		    cv.listaextensao();
 
@@ -132,6 +132,10 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 //			vd.add_formato(extenssao.getValue(),
 //					txt_Arquivo.getText());
 //			vd.ver();
+			
+			Controle_Video cv = new Controle_Video(extenssao, txtendereco);
+			cv.inserirInfo_V();
+			
 			
 			try {
 				
