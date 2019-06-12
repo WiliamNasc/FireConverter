@@ -1,6 +1,6 @@
 package view;
 
-import controler.Controle_Formato_V;
+import controler.Controle_Formato_A;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -110,8 +110,8 @@ public class Novo_Formato_Audio extends Application implements EventHandler<Acti
 		
 		if(event.getTarget() == btnEnviar) {
 			
-			Controle_Formato_V cf = new Controle_Formato_V(txFormato);
-			cf.inserirInfo_V();
+			Controle_Formato_A ca = new Controle_Formato_A(txFormato);
+			ca.inserirInfo_V();
 		}
 		
 	}

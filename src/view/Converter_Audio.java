@@ -2,7 +2,10 @@ package view;
 
 import java.io.File;
 
+import controler.Controle_Audio;
+import controler.Controle_Formato_A;
 import controler.Controle_Formato_V;
+import controler.Controle_Video;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,12 +27,13 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Formato_A;
 import model.Formato_V;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Converter_Audio extends Application implements EventHandler<ActionEvent> {
 
-	private ComboBox<Formato_V> extenssao = new ComboBox<Formato_V>();
+	private ComboBox<Formato_A> cmbextensao = new ComboBox<Formato_A>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Áudio");
 	private Label lblTitulo2 = new Label("Extenção");
@@ -49,7 +53,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		palco.setTitle("Tela - Conversão de áudio");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(lblTitulo2);
-		principal.getChildren().add(extenssao);
+		principal.getChildren().add(cmbextensao);
 		principal.getChildren().add(txt_Arquivo);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
@@ -72,8 +76,8 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		lblTitulo2.setTranslateY(150);
 		lblTitulo2.setTranslateX(18);
 
-		extenssao.setTranslateY(130);
-		extenssao.setTranslateX(100);
+		cmbextensao.setTranslateY(130);
+		cmbextensao.setTranslateX(100);
 
 		btnConverte.setTranslateY(150);
 		btnConverte.setTranslateX(200);
@@ -115,14 +119,23 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 											new ExtensionFilter("MP4", "*.mp4"));
 
 			arquivo = fc.showOpenDialog(null);
-
 			txt_Arquivo.setText(arquivo.toString());
 			
+			Controle_Formato_A fa = new Controle_Formato_A(cmbextensao);
+			fa.listaextensao_V();
 
 		} else if (event.getTarget() == btnConverte) {
+			
+			Controle_Audio ca = new Controle_Audio(cmbextensao, txt_Arquivo);
+			ca.inserirInfo_V();
 
-			System.out.println("Arquivo Convertido com Sucesso !!!");
-			System.out.println("Endereço do arquivo: " + " " + arquivo.toString());
+		
+			try {
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 
 		}
 
