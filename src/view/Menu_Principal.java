@@ -43,15 +43,17 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private MenuItem item3 = new MenuItem("Converter video to audio");
 	
 	private MenuItem item4 = new MenuItem("Relatar erro");
-	private MenuItem item5 = new MenuItem("Novo Formato");
-	private MenuItem item6 = new MenuItem("Biblioteca de erros");
-	private MenuItem item7 = new MenuItem("Logoff");
+	private MenuItem item5 = new MenuItem("Novo Formato de Vídeo");
+	private MenuItem item6 = new MenuItem("Novo Formato de Aúdio");
+	private MenuItem item7 = new MenuItem("Biblioteca de erros");
+	private MenuItem item8 = new MenuItem("Logoff");
 	
 	private Converter_Video converte_v = new Converter_Video();
 	private Converter_Audio converte_a = new Converter_Audio();
 	private ConverterVideoToAudio converte_v_a = new ConverterVideoToAudio();
 	private Relatar_Erro relatar_e = new Relatar_Erro();
-	private Novo_Formato novo_arq = new Novo_Formato();
+	private Novo_Formato_Video novo_arq_v = new Novo_Formato_Video();
+	private Novo_Formato_Audio novo_arq_a = new Novo_Formato_Audio();
 	private Biblioteca_de_Erros bibli_erros = new Biblioteca_de_Erros();
 	
 	
@@ -126,7 +128,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item5.setOnAction(e -> {
 			try {
-				novo_arq.start(new Stage());
+				novo_arq_v.start(new Stage());
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -135,7 +137,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item6.setOnAction(e -> {
 			try {
-				bibli_erros.start(new Stage());
+				novo_arq_a.start(new Stage());
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -143,6 +145,15 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		});
 		
 		item7.setOnAction(e -> {
+			try {
+				bibli_erros.start(new Stage());
+			} catch (Exception e1) {
+				
+				e1.printStackTrace();
+			}
+		});
+		
+		item8.setOnAction(e -> {
 			try {
 				palco.close();
 			} catch (Exception e1) {
@@ -158,10 +169,11 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		relatar_menu.getItems().add(item4);
 		
 		insere_menu.getItems().add(item5);
+		insere_menu.getItems().add(item6);
 		
-		consulta_menu.getItems().add(item6);
+		consulta_menu.getItems().add(item7);
 		
-		sair_menu.getItems().add(item7);
+		sair_menu.getItems().add(item8);
 		
 		
 	    menubar.getMenus().add(convert_menu);

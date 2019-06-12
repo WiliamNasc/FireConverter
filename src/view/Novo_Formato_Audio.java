@@ -1,6 +1,6 @@
 package view;
 
-import controler.Controle_Formato;
+import controler.Controle_Formato_V;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,17 +22,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import model.Formato;
 
 
-public class Novo_Formato extends Application implements EventHandler<ActionEvent>{
+
+public class Novo_Formato_Audio extends Application implements EventHandler<ActionEvent>{
 
 	private TextField txFormato = new TextField();
 	private TextArea taDescricao = new TextArea();
 	private CheckBox cbPadrao = new CheckBox("Definir formato como padrão");
 	private CheckBox cbCategoria = new CheckBox("Criar categoria na biblioteca de erros");
 	private Button btnEnviar = new Button("Enviar");
-	private Label lblTitulo1 = new Label("Novo formato");
+	private Label lblTitulo1 = new Label("Novo formato de Aúdio");
 	
 	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -46,7 +46,7 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 		lblTitulo1.setFont(Font.font("Verdana",
 				FontWeight.BOLD , FontPosture.ITALIC, 15));
 		lblTitulo1.setTranslateY(10);
-		lblTitulo1.setTranslateX(200);
+		lblTitulo1.setTranslateX(145);
 		
 		txFormato.setFocusTraversable(false);
 		txFormato.setPromptText("Insira o novo formato");
@@ -110,7 +110,7 @@ public class Novo_Formato extends Application implements EventHandler<ActionEven
 		
 		if(event.getTarget() == btnEnviar) {
 			
-			Controle_Formato cf = new Controle_Formato(txFormato);
+			Controle_Formato_V cf = new Controle_Formato_V(txFormato);
 			cf.inserirInfo_V();
 		}
 		

@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 
+import controler.Controle_Formato_V;
 import controler.Controle_Video;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,12 +26,13 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import model.Video;
+import model.Formato_V;
+
 
 
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
-	private ComboBox<Video> extenssao = new ComboBox<Video>();
+	private ComboBox<Formato_V> cmbextensao = new ComboBox<Formato_V>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Vídeo");
 	private Label lblTitulo2 = new Label("Extenção");
@@ -53,7 +55,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	    palco.setTitle("Tela - Conversão de Vídeo");
 	    principal.getChildren().add(lblTitulo1);
 	    principal.getChildren().add(lblTitulo2);
-		principal.getChildren().add(extenssao);
+		principal.getChildren().add(cmbextensao);
 		principal.getChildren().add(txtendereco);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
@@ -76,8 +78,8 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 		lblTitulo2.setTranslateY(150);
 		lblTitulo2.setTranslateX(18);
 		
-		extenssao.setTranslateY(130);
-		extenssao.setTranslateX(100);
+		cmbextensao.setTranslateY(130);
+		cmbextensao.setTranslateX(100);
 		
 		btnConverte.setTranslateY(150);
 	    btnConverte.setTranslateX(200);
@@ -123,19 +125,14 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			
 			arquivo = fc.showOpenDialog(null);
 			txtendereco.setText(arquivo.toString());
-		    Controle_Video cv = new Controle_Video(extenssao);
-		    cv.listaextensao();
-
+		    
+			Controle_Formato_V fv = new Controle_Formato_V(cmbextensao);
+			fv.listaextensao_V();
 			
 		} else if (event.getTarget() == btnConverte){
 			
-//			vd.add_formato(extenssao.getValue(),
-//					txt_Arquivo.getText());
-//			vd.ver();
-			
-			Controle_Video cv = new Controle_Video(extenssao, txtendereco);
-			cv.inserirInfo_V();
-			
+			Controle_Video video = new Controle_Video(cmbextensao, txtendereco);
+			video.inserirInfo_V();
 			
 			try {
 				

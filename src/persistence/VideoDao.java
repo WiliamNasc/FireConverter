@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Formato_V;
 import model.Video;
 
 
@@ -21,13 +22,12 @@ public class VideoDao implements IVideoDao {
 	}
 
 	@Override
-	public void inserir_v(Video video) throws SQLException {
+	public void inserir_v(Video video, Formato_V formato) throws SQLException {
 		
 		String sql = "INSERT INTO VIDEO (ENDERECO,EXTENSAO) VALUES (?,?)";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		//ps.setInt(1, video.getCod_v());
 		ps.setString(1, video.getEndereco());
-		ps.setString(2, video.getExtensao());
+		ps.setString(2, formato.getExtensao());
 		ps.execute();
 		ps.close();
 	}

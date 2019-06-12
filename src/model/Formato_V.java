@@ -1,8 +1,7 @@
 package model;
 
-public class Video {
+public class Formato_V {
 	
-	private String endereco;
 	private String extensao;
 	private int cod_v;
 	
@@ -14,12 +13,6 @@ public class Video {
 		this.cod_v = cod_v;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 	public String getExtensao() {
 		return extensao;
 	}
@@ -31,6 +24,5 @@ public class Video {
 	public String toString() {
 		return this.extensao;
 	}
-	
-	
+
 }

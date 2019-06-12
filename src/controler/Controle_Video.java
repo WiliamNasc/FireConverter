@@ -2,22 +2,23 @@ package controler;
 
 
 import java.sql.SQLException;
-import java.util.List;
+
 
 import javax.swing.JOptionPane;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.Formato_V;
 import model.Video;
 import persistence.VideoDao;
 
 
 public class Controle_Video implements IControle_V {
 
-	private ComboBox<Video> cmb_extensao;
+	private ComboBox<Formato_V> cmb_extensao;
 	private TextField txtendereco;
 
-	public Controle_Video(ComboBox<Video> cmbextensao) {
+	public Controle_Video(ComboBox<Formato_V> cmbextensao) {
 
 		this.cmb_extensao = cmbextensao;
 	}
@@ -27,7 +28,7 @@ public class Controle_Video implements IControle_V {
 		this.txtendereco = txtendereco;
 	}
 
-	public Controle_Video(ComboBox<Video> cmb_extensao, TextField txtendereco) {
+	public Controle_Video(ComboBox<Formato_V> cmb_extensao, TextField txtendereco) {
 
 		this.cmb_extensao = cmb_extensao;
 		this.txtendereco = txtendereco;
@@ -37,7 +38,7 @@ public class Controle_Video implements IControle_V {
 	
 
 
-	@Override
+	/*@Override
 	public void listaextensao() {
 		
 		try {
@@ -61,19 +62,20 @@ public class Controle_Video implements IControle_V {
 			JOptionPane.showMessageDialog(null, e.getMessage(), " Erro ",
 										 JOptionPane.ERROR_MESSAGE);
 			
-		}
+		}}*/
 		
-	}
+	
 
 	@Override
 	public void inserirInfo_V() {
 		
 		try {
 			VideoDao videodao = new VideoDao();
+			Formato_V formato = new Formato_V();
 			Video video = new Video();
 			video.setEndereco(txtendereco.getText());
-			video.setExtensao(cmb_extensao.getValue().toString());
-			videodao.inserir_v(video);
+			formato.setExtensao(cmb_extensao.getValue().toString());
+			videodao.inserir_v(video, formato);
 		} catch (ClassNotFoundException | SQLException e) {
 			
 			JOptionPane.showMessageDialog(null, e.getMessage(), " Erro ",

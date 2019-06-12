@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 
+import controler.Controle_Formato_V;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,11 +24,12 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Formato_V;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Converter_Audio extends Application implements EventHandler<ActionEvent> {
 
-	private ComboBox<String> extenssao = new ComboBox<>();
+	private ComboBox<Formato_V> extenssao = new ComboBox<Formato_V>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Áudio");
 	private Label lblTitulo2 = new Label("Extenção");
@@ -80,7 +82,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 
 		btnSeleciona.setOnAction(this);
 		btnConverte.setOnAction(this);
-		extenssao.getItems().addAll("Mp3", "Mp4");
+		
 
 		txt_Arquivo.setPromptText("Endereço do arquivo");
 
@@ -115,6 +117,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			arquivo = fc.showOpenDialog(null);
 
 			txt_Arquivo.setText(arquivo.toString());
+			
 
 		} else if (event.getTarget() == btnConverte) {
 

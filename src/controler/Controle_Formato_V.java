@@ -7,27 +7,26 @@ import javax.swing.JOptionPane;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import model.Formato;
-import model.Video;
-import persistence.FormatoDao;
-import persistence.VideoDao;
+import model.Formato_V;
+import persistence.Formato_VDao;
 
-public class Controle_Formato implements IControle_F {
 
-	private ComboBox<Formato> cmb_extensao;
+public class Controle_Formato_V implements IControle_F_V {
+
+	private ComboBox<Formato_V> cmb_extensao;
 	private TextField txtendereco;
 
-	public Controle_Formato(ComboBox<Formato> cmbextensao) {
+	public Controle_Formato_V(ComboBox<Formato_V> cmbextensao) {
 
 		this.cmb_extensao = cmbextensao;
 	}
 
-	public Controle_Formato(TextField txtendereco) {
+	public Controle_Formato_V(TextField txtendereco) {
 
 		this.txtendereco = txtendereco;
 	}
 
-	public Controle_Formato(ComboBox<Formato> cmb_extensao, TextField txtendereco) {
+	public Controle_Formato_V(ComboBox<Formato_V> cmb_extensao, TextField txtendereco) {
 
 		this.cmb_extensao = cmb_extensao;
 		this.txtendereco = txtendereco;
@@ -38,12 +37,12 @@ public class Controle_Formato implements IControle_F {
 
 
 	@Override
-	public void listaextensao() {
+	public void listaextensao_V() {
 		
 		try {
 			
-			FormatoDao videodao = new FormatoDao();
-			List<Formato> listaExtensao = videodao.consultar_v();
+			Formato_VDao videodao = new Formato_VDao();
+			List<Formato_V> listaExtensao = videodao.consultar_v();
 			if (cmb_extensao.getVisibleRowCount() > 0){
 				
 				cmb_extensao.getItems().removeAll();
@@ -51,7 +50,7 @@ public class Controle_Formato implements IControle_F {
 			
 			if (listaExtensao != null){
 				
-				for (Formato video : listaExtensao) {
+				for (Formato_V video : listaExtensao) {
 					
 					cmb_extensao.getItems().add(video);
 				}
@@ -69,8 +68,8 @@ public class Controle_Formato implements IControle_F {
 	public void inserirInfo_V() {
 		
 		try {
-			FormatoDao videodao = new FormatoDao();
-			Formato video = new Formato();
+			Formato_VDao videodao = new Formato_VDao();
+			Formato_V video = new Formato_V();
 			video.setExtensao(txtendereco.getText());
 			videodao.inserir_v(video);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -80,6 +79,7 @@ public class Controle_Formato implements IControle_F {
 		}
 		
 	}
+
 
 
 }
