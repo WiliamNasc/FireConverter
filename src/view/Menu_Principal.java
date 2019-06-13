@@ -56,6 +56,8 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Novo_Formato_Audio novo_arq_a = new Novo_Formato_Audio();
 	private Biblioteca_de_Erros bibli_erros = new Biblioteca_de_Erros();
 	
+
+	
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -152,10 +154,12 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 				e1.printStackTrace();
 			}
 		});
+
+		Login log = new Login();
 		
 		item8.setOnAction(e -> {
 			try {
-				palco.close();
+				log.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();

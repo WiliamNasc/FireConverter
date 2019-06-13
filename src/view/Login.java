@@ -32,7 +32,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	private TextField txtemail = new TextField();
 	private TextField txtchave = new TextField();
 	private Menu_Principal menu_p = new Menu_Principal();
-
+	Stage p;
 	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
@@ -74,6 +74,8 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 		palco.setScene(scene);
 
+		p = palco;
+		
 		btnEntrar.setOnAction(this);
 
 		
@@ -109,7 +111,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 			try {
 				
-				menu_p.start(new Stage());
+				menu_p.start(p);
 			} catch (Exception e) {
 				
 				e.printStackTrace();
