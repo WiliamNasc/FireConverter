@@ -1,11 +1,8 @@
 package view;
 
 import java.io.File;
-
 import controler.Controle_Audio;
 import controler.Controle_Formato_A;
-import controler.Controle_Formato_V;
-import controler.Controle_Video;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +25,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Formato_A;
-import model.Formato_V;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Converter_Audio extends Application implements EventHandler<ActionEvent> {
@@ -122,12 +118,12 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			txt_Arquivo.setText(arquivo.toString());
 			
 			Controle_Formato_A fa = new Controle_Formato_A(cmbextensao);
-			fa.listaextensao_V();
+			fa.listaextensao_A();
 
 		} else if (event.getTarget() == btnConverte) {
 			
 			Controle_Audio ca = new Controle_Audio(cmbextensao, txt_Arquivo);
-			ca.inserirInfo_V();
+			ca.inserirInfo_A();
 
 		
 			try {
