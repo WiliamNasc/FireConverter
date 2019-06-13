@@ -1,5 +1,6 @@
 package view;
 
+import controler.Controle_Erro;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -120,7 +121,8 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 
 		if (event.getTarget() == btnRelatar) {
 
-			System.out.println("Arquivo Convertido com Sucesso !!!");
+			Controle_Erro ce = new Controle_Erro(cmb_tipo, txtcomentario);
+			ce.inserirInfo_U();
 
 		}
 
