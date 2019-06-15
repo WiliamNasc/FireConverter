@@ -1,5 +1,6 @@
 package persistence;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,23 +61,31 @@ public class UsuarioDao implements IUserDao {
 	}
 
 	@Override
-	public Usuario consultar_u(Usuario user) throws SQLException {
+	public String consultar_u1(Usuario user) throws SQLException {
 		
-		String sql = "SELECT COD_USER,NOME,EMAIL FROM USUARIO WHERE COD_USER = ?";
+		String a;
+		String sql = "SELECT EMAIL FROM USUARIO WHERE EMAIL = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, user.getCod_user());
+		ps.setString(1, user.getEmail());
 		ResultSet rs = ps.executeQuery();
+		
 		if(rs.next()){
+			a = rs.getString("EMAIL");
+			rs.close();
+			ps.close();
+			return a;
+		}else {
 			
-			user.setCod_user(rs.getInt("COD_USER"));
-			user.setNome(rs.getString("NOME"));
-			user.setEmail(rs.getString("EMAIL"));
-		}
+			rs.close();
+			ps.close();
+			
+			return null;}
 		
-		rs.close();
-		ps.close();
 		
-		return user;
+		
+		
+		
+		
 	}
 
 	@Override
@@ -114,5 +123,8 @@ public class UsuarioDao implements IUserDao {
 			return 1;
 			}
 	}
+
+	
+	
 
 }

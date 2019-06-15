@@ -1,6 +1,5 @@
 package view;
 
-import javax.swing.JOptionPane;
 
 import controler.Controle_Usuario;
 import javafx.application.Application;
@@ -24,22 +23,19 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
 // Ctrl + Shift + f = para identar.
 // Ctrl + Shift + o = tirar imports não usados.
 // Ctrl + Shift + c = para comentar linhas.
 //Ctrl + Shift + l = para comentar linhas.
 
-public class Login extends Application implements EventHandler<ActionEvent> {
-	
+public class Cadastro_Usuario extends Application implements EventHandler<ActionEvent> {
 
-	private Button btnEntrar = new Button("Entrar");
-	private Label lblTitulo1 = new Label("LOGIN");
+	private Button btnCadastrar = new Button("Cadastrar");
+	private Label lblTitulo1 = new Label("Cadastrar Usuário");
+	private TextField txtnome = new TextField();
 	private TextField txtemail = new TextField();
 	private PasswordField txtsenha = new PasswordField();
-	private Menu_Principal menu_p = new Menu_Principal();
-	Stage p;
-	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
+	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 	@Override
@@ -47,50 +43,52 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 		VBox principal = new VBox();
 		Scene scene = new Scene(principal, 480, 330);
-		palco.setTitle("Tela - Login");
+		palco.setTitle("Tela - Cadastrar Usuário");
 		principal.getChildren().add(lblTitulo1);
+		principal.getChildren().add(txtnome);
 		principal.getChildren().add(txtemail);
 		principal.getChildren().add(txtsenha);
-		principal.getChildren().add(btnEntrar);
+		principal.getChildren().add(btnCadastrar);
 		principal.setBackground(new Background(myBI));
 
 		palco.setMinHeight(320);
 		palco.setMinWidth(480);
 		palco.setResizable(false);
 
-		lblTitulo1.setTranslateY(20);
-		lblTitulo1.setTranslateX(200);
-		
-		
+		lblTitulo1.setTranslateY(10);
+		lblTitulo1.setTranslateX(150);
+
+		txtnome.setFocusTraversable(false);
+		txtnome.setTranslateY(50);
+		txtnome.setTranslateX(135);
+		txtnome.setMaxWidth(200);
 
 		txtemail.setFocusTraversable(false);
-		txtemail.setTranslateY(60);
+		txtemail.setTranslateY(80);
 		txtemail.setTranslateX(135);
 		txtemail.setMaxWidth(200);
-		
+
 		txtsenha.setFocusTraversable(false);
-		txtsenha.setTranslateY(90);
+		txtsenha.setTranslateY(110);
 		txtsenha.setTranslateX(135);
 		txtsenha.setMaxWidth(200);
 
 
-		btnEntrar.setFocusTraversable(false);
-		btnEntrar.setTranslateY(160);
-		btnEntrar.setTranslateX(200);
+		btnCadastrar.setFocusTraversable(false);
+		btnCadastrar.setTranslateY(160);
+		btnCadastrar.setTranslateX(200);
 
 		palco.setScene(scene);
 
-		p = palco;
-		
-		btnEntrar.setOnAction(this);
+		btnCadastrar.setOnAction(this);
 
-		
 
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 
-		
+		txtnome.setPromptText("Insira o seu nome");
 		txtemail.setPromptText("Insira o seu email");
-		txtsenha.setPromptText("Senha de acesso");
+		txtsenha.setPromptText("Insira a sua senha");
+		
 		
 		lblTitulo1.setFont(Font.font("Righteous",
 				FontWeight.BOLD , FontPosture.ITALIC, 20));
@@ -109,32 +107,14 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	}
 
 	// help - https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
-	// https://docs.oracle.com/javafx/2/ui_controls/password-field.htm
 
 	@Override
 	public void handle(ActionEvent event) {
 
-		if (event.getTarget() == btnEntrar) {
+		if (event.getTarget() == btnCadastrar) {
 
-			try {
-				
-				
-				Controle_Usuario cu = new Controle_Usuario(txtemail);
-			
-				if (cu.consultar_U() != null){
-					
-					menu_p.start(p);
-					
-				}else{
-					
-					JOptionPane.showMessageDialog(null, "Usuário Inválido");
-				}
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}
-
+			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
+			cu.inserirInfo_U();
 		}
 
 	}

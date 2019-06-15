@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Usuario;
 import persistence.UsuarioDao;
@@ -12,12 +11,14 @@ import persistence.UsuarioDao;
 
 public class Controle_Usuario implements IControle_U {
 
-	private ComboBox<Usuario> cmb_usuario;
+
 	private TextField txtnome, txtemail, txtsenha;
 	
-	public Controle_Usuario(ComboBox<Usuario> cmbextensao) {
+	public Controle_Usuario(TextField txtemail) {
 
-		this.cmb_usuario = cmbextensao;
+		this.txtemail = txtemail;
+	
+		
 	}
 
 	public Controle_Usuario(TextField txtnome, TextField txtemail, TextField txtsenha) {
@@ -28,16 +29,6 @@ public class Controle_Usuario implements IControle_U {
 	}
 	
 	
-
-	public Controle_Usuario(ComboBox<Usuario> cmb_usuario, TextField txtnome
-			,TextField txtemail, TextField txtsenha ) {
-
-		this.cmb_usuario = cmb_usuario;
-		this.txtnome = txtnome;
-		this.txtemail = txtemail;
-		this.txtsenha = txtsenha;
-
-	}
 	
 	
 	@Override
@@ -57,5 +48,17 @@ public class Controle_Usuario implements IControle_U {
 		}
 		
 	}
+
+	@Override
+	public String consultar_U() throws Exception, SQLException {
+		UsuarioDao usuariodao = new UsuarioDao();
+		Usuario usuario = new Usuario();
+		usuario.setEmail(txtemail.getText());
+		return usuariodao.consultar_u1(usuario);
+	}
+
+	
+
+	
 
 }
