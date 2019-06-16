@@ -2,7 +2,7 @@ package controler;
 
 
 import java.sql.SQLException;
-
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Formato_V;
 import model.Video;
+import persistence.Formato_VDao;
 import persistence.VideoDao;
 
 
@@ -38,13 +39,13 @@ public class Controle_Video implements IControle_V {
 	
 
 
-	/*@Override
+	@Override
 	public void listaextensao() {
 		
 		try {
 			
-			VideoDao videodao = new VideoDao();
-			List<Video> listaExtensao = videodao.consultar_v();
+			Formato_VDao formato_vdao = new Formato_VDao();
+			List<Formato_V> listaExtensao = formato_vdao.consultar_v();
 			if (cmb_extensao.getVisibleRowCount() > 0){
 				
 				cmb_extensao.getItems().removeAll();
@@ -52,9 +53,9 @@ public class Controle_Video implements IControle_V {
 			
 			if (listaExtensao != null){
 				
-				for (Video video : listaExtensao) {
+				for (Formato_V formato : listaExtensao) {
 					
-					cmb_extensao.getItems().add(video);
+					cmb_extensao.getItems().add(formato);
 				}
 			}
 			
@@ -62,7 +63,7 @@ public class Controle_Video implements IControle_V {
 			JOptionPane.showMessageDialog(null, e.getMessage(), " Erro ",
 										 JOptionPane.ERROR_MESSAGE);
 			
-		}}*/
+		}}
 		
 	
 

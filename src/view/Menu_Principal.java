@@ -159,6 +159,9 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item8.setOnAction(e -> {
 			try {
+				palco.setHeight(360);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
 				log.start(palco);
 			} catch (Exception e1) {
 				

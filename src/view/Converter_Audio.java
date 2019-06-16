@@ -2,7 +2,6 @@ package view;
 
 import java.io.File;
 import controler.Controle_Audio;
-import controler.Controle_Formato_A;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,7 +31,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 	private ComboBox<Formato_A> cmbextensao = new ComboBox<Formato_A>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Áudio");
-	private Label lblTitulo2 = new Label("Extenção");
+	private Label lblTitulo2 = new Label("Extensão");
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
@@ -117,8 +116,8 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			arquivo = fc.showOpenDialog(null);
 			txt_Arquivo.setText(arquivo.toString());
 			
-			Controle_Formato_A fa = new Controle_Formato_A(cmbextensao);
-			fa.listaextensao_A();
+			Controle_Audio ca = new Controle_Audio(cmbextensao);
+			ca.listaextensao();
 
 		} else if (event.getTarget() == btnConverte) {
 			

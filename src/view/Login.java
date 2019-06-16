@@ -39,14 +39,14 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	private PasswordField txtsenha = new PasswordField();
 	private Menu_Principal menu_p = new Menu_Principal();
 	Stage p;
-	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
+	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 	@Override
 	public void start(Stage palco) throws Exception {
 
 		VBox principal = new VBox();
-		Scene scene = new Scene(principal, 480, 330);
+		Scene scene = new Scene(principal, 480, 320);
 		palco.setTitle("Tela - Login");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(txtemail);
@@ -123,6 +123,9 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			
 				if (cu.consultar_U() != null){
 					
+					p.setHeight(358);
+					p.setMinHeight(330);
+					p.setMinWidth(480);
 					menu_p.start(p);
 					
 				}else{

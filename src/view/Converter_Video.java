@@ -2,7 +2,7 @@ package view;
 
 import java.io.File;
 
-import controler.Controle_Formato_V;
+
 import controler.Controle_Video;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -35,7 +35,7 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private ComboBox<Formato_V> cmbextensao = new ComboBox<Formato_V>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter Vídeo");
-	private Label lblTitulo2 = new Label("Extenção");
+	private Label lblTitulo2 = new Label("Extensão");
 	private TextField txtendereco = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
@@ -126,8 +126,8 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			arquivo = fc.showOpenDialog(null);
 			txtendereco.setText(arquivo.toString());
 		    
-			Controle_Formato_V fv = new Controle_Formato_V(cmbextensao);
-			fv.listaextensao_V();
+			Controle_Video cv = new Controle_Video(cmbextensao);
+			cv.listaextensao();
 			
 		} else if (event.getTarget() == btnConverte){
 			

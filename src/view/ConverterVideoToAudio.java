@@ -30,7 +30,7 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 	private ComboBox<String> extenssao = new ComboBox<>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter vídeo para áudio");
-	private Label lblTitulo2 = new Label("Extenção");
+	private Label lblTitulo2 = new Label("Extensão");
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
