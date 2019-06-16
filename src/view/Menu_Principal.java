@@ -38,13 +38,13 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Menu consulta_menu = new Menu("Consultar");
 	private Menu sair_menu = new Menu("Sair");
 	
-	private MenuItem item1 = new MenuItem("Converter video");
-	private MenuItem item2 = new MenuItem("Converter audio");
-	private MenuItem item3 = new MenuItem("Converter video to audio");
+	private MenuItem item1 = new MenuItem("Converter vÍdeo");
+	private MenuItem item2 = new MenuItem("Converter aúdio");
+	private MenuItem item3 = new MenuItem("Converter vídeo to aúdio");
 	
 	private MenuItem item4 = new MenuItem("Relatar erro");
-	private MenuItem item5 = new MenuItem("Novo Formato de Vídeo");
-	private MenuItem item6 = new MenuItem("Novo Formato de Aúdio");
+	private MenuItem item5 = new MenuItem("Novo Formato de vídeo");
+	private MenuItem item6 = new MenuItem("Novo formato de aúdio");
 	private MenuItem item7 = new MenuItem("Biblioteca de erros");
 	private MenuItem item8 = new MenuItem("Logoff");
 	
@@ -159,7 +159,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item8.setOnAction(e -> {
 			try {
-				palco.setHeight(360);
+				palco.setHeight(357.5);
 				palco.setMinHeight(330);
 				palco.setMinWidth(480);
 				log.start(palco);
@@ -169,14 +169,14 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 			}
 		});
 		
-		convert_menu.getItems().add(item1);
 		convert_menu.getItems().add(item2);
+		convert_menu.getItems().add(item1);
 		convert_menu.getItems().add(item3);
 		
 		relatar_menu.getItems().add(item4);
 		
-		insere_menu.getItems().add(item5);
 		insere_menu.getItems().add(item6);
+		insere_menu.getItems().add(item5);
 		
 		consulta_menu.getItems().add(item7);
 		

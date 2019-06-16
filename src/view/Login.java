@@ -123,7 +123,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			
 				if (cu.consultar_U() != null){
 					
-					p.setHeight(358);
+					p.setHeight(358.5);
 					p.setMinHeight(330);
 					p.setMinWidth(480);
 					menu_p.start(p);

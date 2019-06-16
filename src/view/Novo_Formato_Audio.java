@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -28,9 +27,7 @@ import javafx.stage.Stage;
 public class Novo_Formato_Audio extends Application implements EventHandler<ActionEvent>{
 
 	private TextField txFormato = new TextField();
-	private TextArea taDescricao = new TextArea();
-	private CheckBox cbPadrao = new CheckBox("Definir formato como padrão");
-	private CheckBox cbCategoria = new CheckBox("Criar categoria na biblioteca de erros");
+	private TextArea txtDescricao = new TextArea();
 	private Button btnEnviar = new Button("Enviar");
 	private Label lblTitulo1 = new Label("Novo formato de Aúdio");
 	
@@ -51,34 +48,24 @@ public class Novo_Formato_Audio extends Application implements EventHandler<Acti
 		txFormato.setFocusTraversable(false);
 		txFormato.setPromptText("Insira o novo formato");
 		txFormato.setTranslateX(80);
-		txFormato.setTranslateY(50);
+		txFormato.setTranslateY(60);
 		
-		taDescricao.setFocusTraversable(false);
-		taDescricao.setPromptText("Descreva o novo formato");
-		taDescricao.setPrefColumnCount(3);
-		taDescricao.setWrapText(true);
-		taDescricao.setTranslateX(80);
-		taDescricao.setTranslateY(90);
-		taDescricao.setPrefWidth(335);
-		taDescricao.setPrefHeight(100);
-
-		cbPadrao.setFocusTraversable(false);
-		cbPadrao.setTranslateX(80);
-		cbPadrao.setTranslateY(200);
-
-		cbCategoria.setFocusTraversable(false);
-		cbCategoria.setTranslateX(80);
-		cbCategoria.setTranslateY(230);
+		txtDescricao.setFocusTraversable(false);
+		txtDescricao.setPromptText("Descreva o novo formato");
+		txtDescricao.setPrefColumnCount(3);
+		txtDescricao.setWrapText(true);
+		txtDescricao.setTranslateX(80);
+		txtDescricao.setTranslateY(100);
+		txtDescricao.setPrefWidth(335);
+		txtDescricao.setPrefHeight(100);
 
 		btnEnviar.setFocusTraversable(false);
 		btnEnviar.setTranslateX(200);
-		btnEnviar.setTranslateY(270);
+		btnEnviar.setTranslateY(250);
 		btnEnviar.setOnAction(this);
 		
 		tela.getChildren().add(txFormato);
-		tela.getChildren().add(taDescricao);
-		tela.getChildren().add(cbPadrao);
-		tela.getChildren().add(cbCategoria);
+		tela.getChildren().add(txtDescricao);
 		tela.getChildren().add(btnEnviar);
 		tela.getChildren().add(lblTitulo1);
 		tela.setBackground(new Background(myBI));
@@ -89,14 +76,6 @@ public class Novo_Formato_Audio extends Application implements EventHandler<Acti
 		lblTitulo1.setFont(Font.font("Righteous",
 				FontWeight.BOLD , FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
-		
-		cbCategoria.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 15));
-		cbCategoria.setTextFill(Color.web("#6b6b6b"));
-		
-		cbPadrao.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 15));
-		cbPadrao.setTextFill(Color.web("#6b6b6b"));
 		
 		stage.show();
 	}
