@@ -116,7 +116,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 				p.setMinWidth(480);
 				menu.start(p);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 

@@ -23,11 +23,11 @@ import javafx.stage.Stage;
 
 
 
-public class Biblioteca_de_Erros extends Application implements EventHandler<ActionEvent> {
+public class Convertidos extends Application implements EventHandler<ActionEvent> {
 
 	private Button btnVoltar = new Button("Voltar");
-	private Label lblTitulo1 = new Label("Biblioteca de erros");
-	private TableView<String> tblErro = new TableView<String>();
+	private Label lblTitulo1 = new Label("Convertidos");
+	private TableView<String> tblConvertidos = new TableView<String>();
 	Stage p;
 
 	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
@@ -39,10 +39,10 @@ public class Biblioteca_de_Erros extends Application implements EventHandler<Act
 		VBox principal = new VBox();
 		Scene scene = new Scene(principal, 480, 320);
 
-		palco.setTitle("Tela - Biblioteca de erros");
+		palco.setTitle("Tela - Convertidos");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(btnVoltar);
-		principal.getChildren().add(tblErro);
+		principal.getChildren().add(tblConvertidos);
 		principal.setBackground(new Background(myBI));
 
 		palco.setMinHeight(320);
@@ -50,11 +50,11 @@ public class Biblioteca_de_Erros extends Application implements EventHandler<Act
 		palco.setResizable(false);
 
 		lblTitulo1.setTranslateY(10);
-		lblTitulo1.setTranslateX(150);
+		lblTitulo1.setTranslateX(200);
 
-		tblErro.setMaxSize(400, 200);
-		tblErro.setTranslateY(5);
-		tblErro.setTranslateX(45);
+		tblConvertidos.setMaxSize(400, 200);
+		tblConvertidos.setTranslateY(5);
+		tblConvertidos.setTranslateX(45);
 		
 		
 		btnVoltar.setTranslateY(250);

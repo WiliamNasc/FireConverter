@@ -36,6 +36,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Menu relatar_menu = new Menu("Relatar");
 	private Menu insere_menu = new Menu("Inserir");
 	private Menu consulta_menu = new Menu("Consultar");
+	private Menu editar_menu = new Menu("Editar");
 	private Menu sair_menu = new Menu("Sair");
 	
 	private MenuItem item1 = new MenuItem("Converter vÍdeo");
@@ -46,7 +47,9 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private MenuItem item5 = new MenuItem("Novo Formato de vídeo");
 	private MenuItem item6 = new MenuItem("Novo formato de aúdio");
 	private MenuItem item7 = new MenuItem("Biblioteca de erros");
-	private MenuItem item8 = new MenuItem("Logoff");
+	private MenuItem item8 = new MenuItem("Convertidos");
+	private MenuItem item9 = new MenuItem("Editar usuário");
+	private MenuItem item10 = new MenuItem("Logoff");
 	
 	private Converter_Video converte_v = new Converter_Video();
 	private Converter_Audio converte_a = new Converter_Audio();
@@ -55,8 +58,9 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Novo_Formato_Video novo_arq_v = new Novo_Formato_Video();
 	private Novo_Formato_Audio novo_arq_a = new Novo_Formato_Audio();
 	private Biblioteca_de_Erros bibli_erros = new Biblioteca_de_Erros();
+	private Convertidos convertidos = new Convertidos();
+	private Editar_Usuario editar_user = new Editar_Usuario();
 	
-
 	
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
@@ -118,7 +122,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item3.setOnAction(e -> {
 			try {
-				palco.setHeight(358.5);
+				palco.setHeight(360);
 				palco.setMinHeight(330);
 				palco.setMinWidth(480);
 				converte_v_a.start(palco);
@@ -175,10 +179,36 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 				e1.printStackTrace();
 			}
 		});
+		
+		
+		item8.setOnAction(e -> {
+			try {
+				palco.setHeight(355.5);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				convertidos.start(palco);
+			} catch (Exception e1) {
+				
+				e1.printStackTrace();
+			}
+		});
+		
+		
+		item9.setOnAction(e -> {
+			try {
+				palco.setHeight(365);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				editar_user.start(palco);
+			} catch (Exception e1) {
+				
+				e1.printStackTrace();
+			}
+		});
 
 		Login log = new Login();
 		
-		item8.setOnAction(e -> {
+		item10.setOnAction(e -> {
 			try {
 				palco.setHeight(357.5);
 				palco.setMinHeight(330);
@@ -200,14 +230,18 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		insere_menu.getItems().add(item5);
 		
 		consulta_menu.getItems().add(item7);
+		consulta_menu.getItems().add(item8);
 		
-		sair_menu.getItems().add(item8);
+		editar_menu.getItems().add(item9);
+		
+		sair_menu.getItems().add(item10);
 		
 		
 	    menubar.getMenus().add(convert_menu);
 	    menubar.getMenus().add(relatar_menu);
 	    menubar.getMenus().add(insere_menu);
 	    menubar.getMenus().add(consulta_menu);
+	    menubar.getMenus().add(editar_menu);
 	    menubar.getMenus().add(sair_menu);
 	    
 	    
