@@ -92,7 +92,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 
-		txtemail.setPromptText("Insira o seu email");
+		txtemail.setPromptText("Insira o seu email ou nome");
 		txtsenha.setPromptText("Senha de acesso");
 
 		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
