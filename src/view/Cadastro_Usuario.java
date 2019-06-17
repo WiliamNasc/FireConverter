@@ -35,6 +35,8 @@ public class Cadastro_Usuario extends Application implements EventHandler<Action
 	private TextField txtnome = new TextField();
 	private TextField txtemail = new TextField();
 	private PasswordField txtsenha = new PasswordField();
+	Stage p;
+	
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
@@ -95,7 +97,8 @@ public class Cadastro_Usuario extends Application implements EventHandler<Action
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
 		
 		
-
+		p = palco;
+		
 		palco.show();
 
 	}
@@ -115,6 +118,16 @@ public class Cadastro_Usuario extends Application implements EventHandler<Action
 
 			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
 			cu.inserirInfo_U();
+			Login log = new Login();
+			try {
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				log.start(p);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}

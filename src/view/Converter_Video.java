@@ -2,7 +2,6 @@ package view;
 
 import java.io.File;
 
-
 import controler.Controle_Video;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -28,8 +27,6 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.Formato_V;
 
-
-
 public class Converter_Video extends Application implements EventHandler<ActionEvent> {
 
 	private ComboBox<Formato_V> cmbextensao = new ComboBox<Formato_V>();
@@ -40,111 +37,107 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
 	private FileChooser fc = new FileChooser();
+	Stage p;
 
-	
-	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
-	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-	          BackgroundSize.DEFAULT);
-	
+	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
+			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
 	@Override
 	public void start(Stage palco) throws Exception {
-		
+
 		VBox principal = new VBox();
 		Scene scene = new Scene(principal, 480, 320);
-		
-	    palco.setTitle("Tela - Conversão de Vídeo");
-	    principal.getChildren().add(lblTitulo1);
-	    principal.getChildren().add(lblTitulo2);
+
+		palco.setTitle("Tela - Conversão de Vídeo");
+		principal.getChildren().add(lblTitulo1);
+		principal.getChildren().add(lblTitulo2);
 		principal.getChildren().add(cmbextensao);
 		principal.getChildren().add(txtendereco);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
 		principal.setBackground(new Background(myBI));
-		
+
 		palco.setMinHeight(320);
 		palco.setMinWidth(480);
 		palco.setResizable(false);
-		
+
 		lblTitulo1.setTranslateY(10);
 		lblTitulo1.setTranslateX(180);
-		
+
 		txtendereco.setTranslateY(2);
 		txtendereco.setTranslateX(18);
 		txtendereco.setMaxSize(320, 0);
-		
+
 		btnSeleciona.setTranslateY(-23);
 		btnSeleciona.setTranslateX(350);
-		
+
 		lblTitulo2.setTranslateY(150);
 		lblTitulo2.setTranslateX(18);
-		
+
 		cmbextensao.setTranslateY(130);
 		cmbextensao.setTranslateX(100);
-		
+
 		btnConverte.setTranslateY(150);
-	    btnConverte.setTranslateX(200);
-	    
+		btnConverte.setTranslateX(200);
+
 		palco.setScene(scene);
-		
+
 		btnSeleciona.setOnAction(this);
 		btnConverte.setOnAction(this);
 
-		
-		lblTitulo1.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 20));
+		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
-		
-		lblTitulo2.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 15));
+
+		lblTitulo2.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 15));
 		lblTitulo2.setTextFill(Color.web("#6b6b6b"));
-		
+
 		txtendereco.setPromptText("Endereço do arquivo");
-		
-		
-		
+
+		p = palco;
+
 		palco.show();
-		
-	}
-	
-	public static void main (String args[]){
-		
-		Application.launch(args);
-		
-		
+
 	}
 
-// help -  https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
-	
+	public static void main(String args[]) {
+
+		Application.launch(args);
+
+	}
+
+	// help - https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
+
 	@Override
 	public void handle(ActionEvent event) {
-		
-		if (event.getTarget() == btnSeleciona) { 
-			
-			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"),
-											new ExtensionFilter("MP4", "*.mp4"));
-			
+
+		if (event.getTarget() == btnSeleciona) {
+
+			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"), new ExtensionFilter("MP4", "*.mp4"));
+
 			arquivo = fc.showOpenDialog(null);
 			txtendereco.setText(arquivo.toString());
-		    
+
 			Controle_Video cv = new Controle_Video(cmbextensao);
 			cv.listaextensao();
-			
-		} else if (event.getTarget() == btnConverte){
-			
+
+		} else if (event.getTarget() == btnConverte) {
+
 			Controle_Video video = new Controle_Video(cmbextensao, txtendereco);
 			video.inserirInfo_V();
-			
+			Menu_Principal menu = new Menu_Principal();
 			try {
-				
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
 			} catch (Exception e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			
-			
+
 		}
-		
+
 	}
 
 }

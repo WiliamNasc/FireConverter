@@ -1,6 +1,8 @@
 package view;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,27 +20,22 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
-public class Biblioteca_de_Erros extends Application {
+public class Biblioteca_de_Erros extends Application implements EventHandler<ActionEvent> {
 
 	private TextArea taErros = new TextArea();
-	private Button btnVoltar = new Button("Voltar");
-	private Button btnSim = new Button("Sim");
-	private Button btnNao = new Button("Não");
-	private Label lblAjuda = new Label("Isso te ajudou?");
+	private Button btnvoltar = new Button("Voltar");
 	private Label lblTitulo1 = new Label("Biblioteca de Erros");
-	
-	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
-	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-	          BackgroundSize.DEFAULT);
+	Stage p;
+
+	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
+			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		
+
 		Pane tela = new Pane();
 		Scene scn = new Scene(tela, 480, 320);
-		
+
 		taErros.setEditable(false);
 		taErros.setWrapText(true);
 		taErros.setTranslateX(80);
@@ -48,47 +45,48 @@ public class Biblioteca_de_Erros extends Application {
 
 		lblTitulo1.setTranslateY(20);
 		lblTitulo1.setTranslateX(150);
-		lblAjuda.setTranslateX(80);
-		lblAjuda.setTranslateY(240);
-		btnSim.setTranslateX(80);
-		btnSim.setTranslateY(265);
-		btnNao.setTranslateX(120);
-		btnNao.setTranslateY(265);
-		
-		btnVoltar.setTranslateX(365);
-		btnVoltar.setTranslateY(265);
-		
+
+		btnvoltar.setTranslateX(365);
+		btnvoltar.setTranslateY(265);
+
 		tela.getChildren().add(taErros);
 		tela.getChildren().add(lblTitulo1);
-		tela.getChildren().add(lblAjuda);
-		tela.getChildren().add(btnSim);
-		tela.getChildren().add(btnNao);
-		tela.getChildren().add(btnVoltar);
+
+		tela.getChildren().add(btnvoltar);
 		tela.setBackground(new Background(myBI));
 
-		
 		stage.setTitle("Tela - Biblioteca de Erros");
 		stage.setScene(scn);
 		stage.setMinHeight(320);
 		stage.setMinWidth(480);
 		stage.setResizable(false);
-		
-		
-		lblTitulo1.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 20));
+
+		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
-		
-		lblAjuda.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 15));
-		lblAjuda.setTextFill(Color.web("#6b6b6b"));
-		
-		
+
+		p = stage;
+
 		stage.show();
 	}
 
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
-	
-}
 
+	@Override
+	public void handle(ActionEvent event) {
+
+		if (event.getTarget() == btnvoltar) {
+
+			Menu_Principal menu = new Menu_Principal();
+			try {
+				menu.start(p);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

@@ -93,7 +93,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item1.setOnAction(e -> {
 			try {
-				converte_v.start(new Stage());
+				palco.setHeight(360);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				converte_v.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -102,7 +105,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item2.setOnAction(e -> {
 			try {
-				converte_a.start(new Stage());
+				palco.setHeight(360);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				converte_a.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -112,7 +118,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item3.setOnAction(e -> {
 			try {
-				converte_v_a.start(new Stage());
+				palco.setHeight(358.5);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				converte_v_a.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -121,7 +130,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item4.setOnAction(e -> {
 			try {
-				relatar_e.start(new Stage());
+				palco.setHeight(370);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				relatar_e.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -130,7 +142,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item5.setOnAction(e -> {
 			try {
-				novo_arq_v.start(new Stage());
+				palco.setHeight(358.5);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				novo_arq_v.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -139,7 +154,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item6.setOnAction(e -> {
 			try {
-				novo_arq_a.start(new Stage());
+				palco.setHeight(358.5);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				novo_arq_a.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();
@@ -148,7 +166,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item7.setOnAction(e -> {
 			try {
-				bibli_erros.start(new Stage());
+				palco.setHeight(355.5);
+				palco.setMinHeight(330);
+				palco.setMinWidth(480);
+				bibli_erros.start(palco);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();

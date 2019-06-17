@@ -24,14 +24,12 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
 // Ctrl + Shift + f = para identar.
 // Ctrl + Shift + o = tirar imports não usados.
 // Ctrl + Shift + c = para comentar linhas.
 //Ctrl + Shift + l = para comentar linhas.
 
 public class Login extends Application implements EventHandler<ActionEvent> {
-	
 
 	private Button btnEntrar = new Button("Entrar");
 	private Label lblTitulo1 = new Label("LOGIN");
@@ -60,19 +58,16 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 		lblTitulo1.setTranslateY(20);
 		lblTitulo1.setTranslateX(200);
-		
-		
 
 		txtemail.setFocusTraversable(false);
 		txtemail.setTranslateY(60);
 		txtemail.setTranslateX(135);
 		txtemail.setMaxWidth(200);
-		
+
 		txtsenha.setFocusTraversable(false);
 		txtsenha.setTranslateY(90);
 		txtsenha.setTranslateX(135);
 		txtsenha.setMaxWidth(200);
-
 
 		btnEntrar.setFocusTraversable(false);
 		btnEntrar.setTranslateY(160);
@@ -81,22 +76,16 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 		palco.setScene(scene);
 
 		p = palco;
-		
-		btnEntrar.setOnAction(this);
 
-		
+		btnEntrar.setOnAction(this);
 
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 
-		
 		txtemail.setPromptText("Insira o seu email");
 		txtsenha.setPromptText("Senha de acesso");
-		
-		lblTitulo1.setFont(Font.font("Righteous",
-				FontWeight.BOLD , FontPosture.ITALIC, 20));
+
+		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
-		
-		
 
 		palco.show();
 
@@ -117,24 +106,28 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 		if (event.getTarget() == btnEntrar) {
 
 			try {
-				
-				
+
 				Controle_Usuario cu = new Controle_Usuario(txtemail);
-			
-				if (cu.consultar_U() != null){
-					
+
+				if (cu.consultar_U() != null) {
+
 					p.setHeight(358.5);
 					p.setMinHeight(330);
 					p.setMinWidth(480);
 					menu_p.start(p);
-					
-				}else{
-					
+
+				} else {
+
 					JOptionPane.showMessageDialog(null, "Usuário Inválido");
+					Cadastro_Usuario ca = new Cadastro_Usuario();
+					p.setHeight(370);
+					p.setMinHeight(330);
+					p.setMinWidth(480);
+					ca.start(p);
 				}
-				
+
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
 			}
 

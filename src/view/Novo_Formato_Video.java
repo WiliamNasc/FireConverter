@@ -30,6 +30,7 @@ public class Novo_Formato_Video extends Application implements EventHandler<Acti
 	private TextArea txtDescricao = new TextArea();
 	private Button btnEnviar = new Button("Enviar");
 	private Label lblTitulo1 = new Label("Novo formato de Vídeo");
+	Stage p;
 	
 	BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -77,6 +78,8 @@ public class Novo_Formato_Video extends Application implements EventHandler<Acti
 				FontWeight.BOLD , FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
 		
+		p = stage;
+		
 		stage.show();
 	}
 
@@ -91,6 +94,16 @@ public class Novo_Formato_Video extends Application implements EventHandler<Acti
 			
 			Controle_Formato_V cf = new Controle_Formato_V(txFormato);
 			cf.inserirInfo_V();
+			Menu_Principal menu = new Menu_Principal();
+			try {
+				p.setHeight(357);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

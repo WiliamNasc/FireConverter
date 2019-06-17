@@ -33,15 +33,16 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 	private Label lblTitulo1 = new Label("Relatar Erro");
 	private ComboBox<String> cmb_tipo = new ComboBox<String>();
 	private TextArea txtcomentario = new TextArea();
-
-	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 500, false, true),
+	Stage p;
+	
+	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490,340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 	@Override
 	public void start(Stage palco) throws Exception {
 
 		VBox principal = new VBox();
-		Scene scene = new Scene(principal, 480, 490);
+		Scene scene = new Scene(principal, 480,330);
 		palco.setTitle("Tela - Relatar Erro");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(txtcomentario);
@@ -58,16 +59,16 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 
 
 		txtcomentario.setFocusTraversable(false);
-		txtcomentario.setTranslateY(160);
+		txtcomentario.setTranslateY(30);
 		txtcomentario.setTranslateX(135);
 		txtcomentario.setMaxWidth(200);
 
 		cmb_tipo.setFocusTraversable(false);
-		cmb_tipo.setTranslateY(-120);
-		cmb_tipo.setTranslateX(135);
+		cmb_tipo.setTranslateY(-150);
+		cmb_tipo.setTranslateX(350);
 
 		btnRelatar.setFocusTraversable(false);
-		btnRelatar.setTranslateY(160);
+		btnRelatar.setTranslateY(50);
 		btnRelatar.setTranslateX(200);
 
 		palco.setScene(scene);
@@ -87,7 +88,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 				FontWeight.BOLD , FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
 		
-		
+		p = palco;
 
 		palco.show();
 
@@ -108,6 +109,16 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 
 			Controle_Erro ce = new Controle_Erro(cmb_tipo, txtcomentario);
 			ce.inserirInfo_U();
+			Menu_Principal menu = new Menu_Principal();
+			try {
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
 

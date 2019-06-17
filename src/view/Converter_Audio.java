@@ -35,6 +35,8 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 	private TextField txt_Arquivo = new TextField();
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
+	Stage p;
+	
 	FileChooser fc = new FileChooser();
 
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
@@ -91,6 +93,8 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		lblTitulo2.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 15));
 		lblTitulo2.setTextFill(Color.web("#6b6b6b"));
 
+		p = palco;
+		
 		palco.show();
 
 	}
@@ -123,12 +127,14 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			
 			Controle_Audio ca = new Controle_Audio(cmbextensao, txt_Arquivo);
 			ca.inserirInfo_A();
-
-		
+			Menu_Principal menu = new Menu_Principal();
 			try {
-				
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
 			} catch (Exception e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

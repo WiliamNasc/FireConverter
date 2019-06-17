@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 
+import controler.Controle_Audio;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,11 +24,12 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Formato_A;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ConverterVideoToAudio extends Application implements EventHandler<ActionEvent> {
 
-	private ComboBox<String> extenssao = new ComboBox<>();
+	private ComboBox<Formato_A> cmbextensao = new ComboBox<Formato_A>();
 	private Button btnConverte = new Button("Converter");
 	private Label lblTitulo1 = new Label("Converter vídeo para áudio");
 	private Label lblTitulo2 = new Label("Extensão");
@@ -35,6 +37,7 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 	private Button btnSeleciona = new Button("Selecionar Arquivo");
 	private File arquivo = null;
 	FileChooser fc = new FileChooser();
+	Stage p;
 
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -47,7 +50,7 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 		palco.setTitle("Tela - Conversão de Vídeo para áudio");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(lblTitulo2);
-		principal.getChildren().add(extenssao);
+		principal.getChildren().add(cmbextensao);
 		principal.getChildren().add(txt_Arquivo);
 		principal.getChildren().add(btnSeleciona);
 		principal.getChildren().add(btnConverte);
@@ -70,8 +73,8 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 		lblTitulo2.setTranslateY(150);
 		lblTitulo2.setTranslateX(18);
 
-		extenssao.setTranslateY(130);
-		extenssao.setTranslateX(100);
+		cmbextensao.setTranslateY(130);
+		cmbextensao.setTranslateX(100);
 
 		btnConverte.setTranslateY(150);
 		btnConverte.setTranslateX(200);
@@ -81,8 +84,6 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 		btnSeleciona.setOnAction(this);
 		btnConverte.setOnAction(this);
 
-		extenssao.getItems().addAll("Mp3", "Mp4");
-
 		lblTitulo1.setFont(Font.font("Righteous", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
 
@@ -90,6 +91,8 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 		lblTitulo2.setTextFill(Color.web("#6b6b6b"));
 
 		txt_Arquivo.setPromptText("Endereço do arquivo");
+
+		p = palco;
 
 		palco.show();
 
@@ -102,24 +105,34 @@ public class ConverterVideoToAudio extends Application implements EventHandler<A
 	}
 
 	// help - https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
-//	https://www.programcreek.com/java-api-examples/?api=javafx.stage.FileChooser.ExtensionFilter
+	// https://www.programcreek.com/java-api-examples/?api=javafx.stage.FileChooser.ExtensionFilter
 
 	@Override
 	public void handle(ActionEvent event) {
 
 		if (event.getTarget() == btnSeleciona) {
 
-			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"),
-											new ExtensionFilter("MP4", "*.mp4"));
+			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"), new ExtensionFilter("MP4", "*.mp4"));
 
 			arquivo = fc.showOpenDialog(null);
 
 			txt_Arquivo.setText(arquivo.toString());
 
+			Controle_Audio ca = new Controle_Audio(cmbextensao);
+			ca.listaextensao();
+
 		} else if (event.getTarget() == btnConverte) {
 
-			System.out.println("Arquivo Convertido com Sucesso !!!");
-			System.out.println("Endereço do arquivo: " + " " + arquivo.toString());
+			Menu_Principal menu = new Menu_Principal();
+			try {
+				p.setHeight(357.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
 
