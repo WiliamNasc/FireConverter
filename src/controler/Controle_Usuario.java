@@ -14,10 +14,10 @@ public class Controle_Usuario implements IControle_U {
 
 	private TextField txtnome, txtemail, txtsenha;
 	
-	public Controle_Usuario(TextField txtemail) {
+	public Controle_Usuario(TextField txtemail, TextField txtsenha) {
 
 		this.txtemail = txtemail;
-	
+		this.txtsenha = txtsenha;
 		
 	}
 
@@ -54,8 +54,19 @@ public class Controle_Usuario implements IControle_U {
 		UsuarioDao usuariodao = new UsuarioDao();
 		Usuario usuario = new Usuario();
 		usuario.setEmail(txtemail.getText());
-		return usuariodao.consultar_u1(usuario);
+		usuario.setNome(txtemail.getText());
+		return usuariodao.consultar_u(usuario);
 	}
+
+	@Override
+	public String consultar_Senha() throws Exception, SQLException {
+		UsuarioDao usuariodao = new UsuarioDao();
+		Usuario usuario = new Usuario();
+		usuario.setSenha(txtsenha.getText());
+		return usuariodao.consultar_senha(usuario);
+	}
+
+	
 
 	
 
