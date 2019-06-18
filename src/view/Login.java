@@ -24,13 +24,14 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+
 // Ctrl + Shift + f = para identar.
 // Ctrl + Shift + o = tirar imports não usados.
 // Ctrl + Shift + c = para comentar linhas.
 //Ctrl + Shift + l = para comentar linhas.
 
 public class Login extends Application implements EventHandler<ActionEvent> {
-
+	
 	private int cont=0;
 	private Button btnEntrar = new Button("Entrar");
 	private Button btnCadastrar = new Button("Novo usuário");
@@ -39,7 +40,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	private PasswordField txtsenha = new PasswordField();
 	private Menu_Principal menu_p = new Menu_Principal();
 	private Cadastro_Usuario cadastro_Usuario = new Cadastro_Usuario();
-	private Editar_Usuario editar_Usuario = new Editar_Usuario();
+	
 	
 	Stage p;
 	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
@@ -121,6 +122,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			try {
 
 				Controle_Usuario cu = new Controle_Usuario(txtemail, txtsenha);
+				Editar_Usuario editar_Usuario = new Editar_Usuario();
 
 				if (txtemail.getText().trim().isEmpty() || txtsenha.getText().trim().isEmpty()) {
 
@@ -128,11 +130,13 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 				} else {
 					
-					if(cu.consultar_U() != null && cu.consultar_Senha() != null){
+					if(cu.consultar_U() != "usuário não existe"
+							&& cu.consultar_Senha() != "senha não existe"){
 						
 						JOptionPane.showMessageDialog(null, "Seja Bem vindo, "
 								+ cu.consultar_U() + " , é sempre um prazer "+
 								"revelo ;)");
+				
 						p.setHeight(360);
 						p.setMinHeight(330);
 						p.setMinWidth(480);
@@ -141,6 +145,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 					}else{
 						
 						cont++;
+						System.out.println("");
 						
 						if (cont == 3){
 							

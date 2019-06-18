@@ -81,13 +81,15 @@ public class ErroDao implements IErroDao {
 	public List<Erro> consultar_e() throws SQLException {
 		
 		List<Erro> listaErro = new ArrayList<Erro>();
-		String sql = "SELECT CATEGORIA,DESCRICAO FROM ERRO";
+		String sql = "SELECT COD_ERRO,CATEGORIA,DESCRICAO FROM ERRO1";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
 			
 			Erro erro = new Erro();
-			erro.setDescricao(rs.getString("ERRO"));
+			erro.setCod_erro(rs.getInt("COD_ERRO"));
+			erro.setCategoria(rs.getString("CATEGORIA"));
+			erro.setDescricao(rs.getString("DESCRICAO"));
 			listaErro.add(erro);
 		}
 		

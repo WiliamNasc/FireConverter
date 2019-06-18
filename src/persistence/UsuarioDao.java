@@ -60,7 +60,8 @@ public class UsuarioDao implements IUserDao {
 	@Override
 	public String consultar_u(Usuario user) throws SQLException {
 
-		String a;
+		String usuario, erro;
+		erro =  "usuário não existe";
 		String sql = "SELECT EMAIL,NOME FROM USUARIO WHERE EMAIL = ? OR NOME = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, user.getEmail());
@@ -68,16 +69,16 @@ public class UsuarioDao implements IUserDao {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			a = rs.getString("NOME");
+			usuario = rs.getString("NOME");
 			rs.close();
 			ps.close();
-			return a;
+			return usuario;
 		} else {
 
 			rs.close();
 			ps.close();
 
-			return null;
+			return erro;
 		}
 
 	}
@@ -121,23 +122,24 @@ public class UsuarioDao implements IUserDao {
 	@Override
 	public String consultar_senha(Usuario user) throws SQLException {
 
-		String a;
+		String senha, erro;
+		erro = "senha não existe";
 		String sql = "SELECT SENHA FROM USUARIO WHERE SENHA = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, user.getSenha());
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			a = rs.getString("SENHA");
+			senha = rs.getString("SENHA");
 			rs.close();
 			ps.close();
-			return a;
+			return senha;
 		} else {
 
 			rs.close();
 			ps.close();
 
-			return null;
+			return erro;
 		}
 	}
 

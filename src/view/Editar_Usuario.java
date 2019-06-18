@@ -2,6 +2,8 @@ package view;
 
 
 
+
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,6 +25,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+
+
 // Ctrl + Shift + f = para identar.
 // Ctrl + Shift + o = tirar imports não usados.
 // Ctrl + Shift + c = para comentar linhas.
@@ -35,6 +39,8 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	private Button btnVoltar = new Button("Voltar");
 	private Label lblTitulo1 = new Label("Editar usuário");
 	private TextField txtnome = new TextField();
+	
+
 	private TextField txtemail = new TextField();
 	private PasswordField txtsenha = new PasswordField();
 	Stage p;
@@ -42,6 +48,10 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
+	public Editar_Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
 	public void start(Stage palco) throws Exception {
 
@@ -103,7 +113,7 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 
 		txtnome.setPromptText("Insira o seu nome");
-		txtemail.setPromptText("Insira o seu email");
+		//txtemail.setPromptText("Insira o seu email");
 		txtsenha.setPromptText("Insira a sua senha");
 		
 		
