@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 import controler.Controle_Audio;
+import it.sauronsoftware.jave.EncoderException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -128,6 +129,35 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			Controle_Audio ca = new Controle_Audio(cmbextensao, txt_Arquivo);
 			ca.inserirInfo_A();
 			Menu_Principal menu = new Menu_Principal();
+			
+			String[] file = txt_Arquivo.getText().split("");
+			String FileAux = "";
+			String arq = "";
+			int i = 0;
+			
+			for(i = 0; i<file.length; i++) {
+				if(file[i].equals("\\")){
+					file[i] = "/";
+				}
+				FileAux += file[i];
+				System.out.println(FileAux);
+			}
+			
+			i=0;
+			
+			while(!file[i].equals(".")) {
+				arq += file[i];
+				i++;
+			}
+			
+			
+			try {
+				ca.converter(cmbextensao.getValue().toString(), arq,new File(FileAux));
+			} catch (IllegalArgumentException | EncoderException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			try {
 				p.setHeight(358.5);
 				p.setMinHeight(330);

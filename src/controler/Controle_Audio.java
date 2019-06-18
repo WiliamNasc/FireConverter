@@ -1,10 +1,16 @@
 package controler;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import it.sauronsoftware.jave.AudioAttributes;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.EncoderException;
+import it.sauronsoftware.jave.EncodingAttributes;
+import it.sauronsoftware.jave.InputFormatException;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Audio;
@@ -74,6 +80,26 @@ public class Controle_Audio implements IControle_A {
 			JOptionPane.showMessageDialog(null, e.getMessage(), " Erro ", JOptionPane.ERROR_MESSAGE);
 		}
 
+	}
+
+	public void converter(String ext, String arq, File audio)
+			throws IllegalArgumentException, InputFormatException, EncoderException {
+
+		File convertido = new File(arq + "." + ext);
+
+		AudioAttributes aud = new AudioAttributes();
+		EncodingAttributes attr = new EncodingAttributes();
+
+		aud.setCodec("pcm_s24le");
+		aud.setBitRate(new Integer(128000));
+		aud.setChannels(2);
+		aud.setSamplingRate(new Integer(44100));
+
+		attr.setFormat(ext);
+		attr.setAudioAttributes(aud);
+
+		Encoder enc = new Encoder();
+		enc.encode(audio, convertido, attr);
 	}
 
 }
