@@ -122,7 +122,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			try {
 
 				Controle_Usuario cu = new Controle_Usuario(txtemail, txtsenha);
-				Editar_Usuario editar_Usuario = new Editar_Usuario();
+				Editar_Usuario editar_Usuario = new Editar_Usuario(txtemail);
 
 				if (txtemail.getText().trim().isEmpty() || txtsenha.getText().trim().isEmpty()) {
 

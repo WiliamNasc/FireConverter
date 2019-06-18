@@ -42,16 +42,22 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	
 
 	private TextField txtemail = new TextField();
+	private TextField txtemail1 = new TextField();
+
 	private PasswordField txtsenha = new PasswordField();
 	Stage p;
 	
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
-	public Editar_Usuario() {
-		// TODO Auto-generated constructor stub
+	public Editar_Usuario(TextField txtemail1) {
+		this.txtemail1 = txtemail1;
 	}
-	
+
+	public Editar_Usuario() {
+
+	}
+
 	@Override
 	public void start(Stage palco) throws Exception {
 
@@ -83,6 +89,7 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		txtemail.setTranslateY(80);
 		txtemail.setTranslateX(135);
 		txtemail.setMaxWidth(200);
+		txtemail.setText(txtemail1.getText());
 
 		txtsenha.setFocusTraversable(false);
 		txtsenha.setTranslateY(110);
