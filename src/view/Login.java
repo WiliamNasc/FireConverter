@@ -140,7 +140,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 								"revelo ;)");
 						
 						p.setHeight(360);
-						p.setMinHeight(330);
+						p.setMinHeight(361);
 						p.setMinWidth(480);
 						menu_p.start(p);
 						
