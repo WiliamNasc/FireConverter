@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -61,11 +63,24 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Convertidos convertidos = new Convertidos();
 	private Editar_Usuario editar_user = new Editar_Usuario();
 	
-	
+	private TextField txtnome1 = new TextField();
+	private TextField txtemail1 = new TextField();
+	private PasswordField txtsenha1 = new PasswordField();
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 	          BackgroundSize.DEFAULT);
+	
+	public Menu_Principal() {
+		
+	}
+	
+	public Menu_Principal(TextField txtemail1, TextField txtnome1, PasswordField txtsenha1) {
+		
+		this.txtemail1 = txtemail1;
+		this.txtnome1 = txtnome1;
+		this.txtsenha1 = txtsenha1;
+	}
 	
 	@Override
 	public void start(Stage palco) throws Exception {
@@ -199,6 +214,8 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 				palco.setHeight(365);
 				palco.setMinHeight(330);
 				palco.setMinWidth(480);
+				txtemail1.setText("Rola");
+				Editar_Usuario ed = new Editar_Usuario(txtemail1, txtnome1, txtsenha1);
 				editar_user.start(palco);
 			} catch (Exception e1) {
 				

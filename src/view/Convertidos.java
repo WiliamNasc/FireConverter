@@ -1,13 +1,20 @@
 package view;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -20,6 +27,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.Erro;
+import persistence.ErroDao;
 
 
 
@@ -27,7 +36,8 @@ public class Convertidos extends Application implements EventHandler<ActionEvent
 
 	private Button btnVoltar = new Button("Voltar");
 	private Label lblTitulo1 = new Label("Convertidos");
-	private TableView<String> tblConvertidos = new TableView<String>();
+	private TableView<Convertidos> tblConvertidos;
+	private ObservableList<Convertidos> erro;
 	Stage p;
 
 	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
@@ -42,7 +52,6 @@ public class Convertidos extends Application implements EventHandler<ActionEvent
 		palco.setTitle("Tela - Convertidos");
 		principal.getChildren().add(lblTitulo1);
 		principal.getChildren().add(btnVoltar);
-		principal.getChildren().add(tblConvertidos);
 		principal.setBackground(new Background(myBI));
 
 		palco.setMinHeight(320);
@@ -52,9 +61,7 @@ public class Convertidos extends Application implements EventHandler<ActionEvent
 		lblTitulo1.setTranslateY(10);
 		lblTitulo1.setTranslateX(200);
 
-		tblConvertidos.setMaxSize(400, 200);
-		tblConvertidos.setTranslateY(5);
-		tblConvertidos.setTranslateX(45);
+		
 		
 		
 		btnVoltar.setTranslateY(250);
@@ -70,6 +77,22 @@ public class Convertidos extends Application implements EventHandler<ActionEvent
 
 		p = palco;
 		
+		tblConvertidos = new TableView<Convertidos>();
+		tblConvertidos.setItems(erro);
+		
+		TableColumn<Erro, Integer> colunaCodigo = new TableColumn<Erro,Integer>("Código");
+		TableColumn<Erro, String> colunaCategoria = new TableColumn<Erro,String>("Categoria");
+		TableColumn<Erro, String> colunaDescricao = new TableColumn<Erro,String>("Descricao");
+
+		colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("cod_video"));
+		colunaCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+		colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+		
+		List<Convertidos> listtblConvertidos = new ArrayList<Convertidos>();
+		
+		/*ErroDao eDao = new ErroDao();
+		listConvertidos = eDao.consultar_e();
+		erro = FXCollections.observableArrayList(listConvertidos);*/
 		
 		palco.show();
 

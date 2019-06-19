@@ -4,6 +4,7 @@ package view;
 
 
 
+import controler.Controle_Usuario;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,6 +28,7 @@ import javafx.stage.Stage;
 
 
 
+
 // Ctrl + Shift + f = para identar.
 // Ctrl + Shift + o = tirar imports não usados.
 // Ctrl + Shift + c = para comentar linhas.
@@ -38,20 +40,33 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	private Button btnDeletar = new Button("Deletar");
 	private Button btnVoltar = new Button("Voltar");
 	private Label lblTitulo1 = new Label("Editar usuário");
-	private TextField txtnome = new TextField();
 	
+	
+	private TextField txtnome = new TextField();
+	private TextField txtnome1 = new TextField();
 
 	private TextField txtemail = new TextField();
 	private TextField txtemail1 = new TextField();
 
 	private PasswordField txtsenha = new PasswordField();
+	private PasswordField txtsenha1 = new PasswordField();
+	
+	
 	Stage p;
 	
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
-	public Editar_Usuario(TextField txtemail1) {
+	public Editar_Usuario(TextField txtemail1, TextField txtnome1, PasswordField txtsenha1) {
+		
 		this.txtemail1 = txtemail1;
+		this.txtnome1 = txtnome1;
+		this.txtsenha1 = txtsenha1;
+	}
+	
+	public Editar_Usuario(TextField txtemail1,PasswordField txtsenha1) {
+		this.txtemail1 = txtemail1;
+		this.txtsenha1 =  txtsenha1;
 	}
 
 	public Editar_Usuario() {
@@ -84,7 +99,8 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		txtnome.setTranslateY(50);
 		txtnome.setTranslateX(135);
 		txtnome.setMaxWidth(200);
-
+		
+		
 		txtemail.setFocusTraversable(false);
 		txtemail.setTranslateY(80);
 		txtemail.setTranslateX(135);
@@ -95,7 +111,7 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		txtsenha.setTranslateY(110);
 		txtsenha.setTranslateX(135);
 		txtsenha.setMaxWidth(200);
-
+		txtsenha.setText(txtsenha1.getText());
 
 		btnAtualizar.setFocusTraversable(false);
 		btnAtualizar.setTranslateY(160);
@@ -121,7 +137,7 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 
 		txtnome.setPromptText("Insira o seu nome");
 		//txtemail.setPromptText("Insira o seu email");
-		txtsenha.setPromptText("Insira a sua senha");
+		//txtsenha.setPromptText("Insira a sua senha");
 		
 		
 		lblTitulo1.setFont(Font.font("Righteous",
@@ -129,7 +145,9 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		lblTitulo1.setTextFill(Color.web("#6b6b6b"));
 		
 		
+		
 		p = palco;
+		
 		
 		palco.show();
 
@@ -158,6 +176,30 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 				
 				e.printStackTrace();
 			}
+		}
+		
+		if (event.getTarget() == btnAtualizar){
+			
+			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
+			try {
+				cu.alterarInfo_U();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (event.getTarget() == btnDeletar){
+			
+			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
+			
+			try {
+				cu.deletar_U();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 
 	}

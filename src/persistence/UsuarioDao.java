@@ -35,12 +35,10 @@ public class UsuarioDao implements IUserDao {
 	@Override
 	public void alterar_u(Usuario user) throws SQLException {
 
-		String sql = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, SENHA = ? WHERE COD_USER = ?";
+		String sql = "UPDATE USUARIO SET NOME = ? WHERE EMAIL = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, user.getNome());
 		ps.setString(2, user.getEmail());
-		ps.setString(3, user.getSenha());
-		ps.setInt(4, user.getCod_user());
 		ps.execute();
 		ps.close();
 
@@ -49,9 +47,9 @@ public class UsuarioDao implements IUserDao {
 	@Override
 	public void excluir_u(Usuario user) throws SQLException {
 
-		String sql = "DELETE USUARIO WHERE COD_USER = ?";
+		String sql = "DELETE USUARIO WHERE EMAIL = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, user.getCod_user());
+		ps.setString(1, user.getEmail());
 		ps.execute();
 		ps.close();
 
@@ -134,6 +132,55 @@ public class UsuarioDao implements IUserDao {
 			rs.close();
 			ps.close();
 			return senha;
+		} else {
+
+			rs.close();
+			ps.close();
+
+			return erro;
+		}
+	}
+
+	@Override
+	public String consultar_Email(Usuario user) throws SQLException {
+		
+		String usuario, erro;
+		erro =  "usuário não existe";
+		String sql = "SELECT EMAIL FROM USUARIO WHERE EMAIL = ?";
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, user.getEmail());
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			usuario = rs.getString("EMAIL");
+			rs.close();
+			ps.close();
+			return usuario;
+		} else {
+
+			rs.close();
+			ps.close();
+
+			return erro;
+		}
+	}
+
+	@Override
+	public String consultar_Nome(Usuario user) throws SQLException {
+		
+		String usuario, erro;
+		erro =  "usuário não existe";
+		String sql = "SELECT NOME FROM USUARIO WHERE NOME = ?";
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, user.getNome());
+		ps.setString(2,user.getEmail());
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			usuario = rs.getString("NOME");
+			rs.close();
+			ps.close();
+			return usuario;
 		} else {
 
 			rs.close();

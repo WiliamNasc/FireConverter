@@ -38,9 +38,11 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 	private Label lblTitulo1 = new Label("LOGIN");
 	private TextField txtemail = new TextField();
 	private PasswordField txtsenha = new PasswordField();
+	private TextField txtnome = new TextField();
 	private Menu_Principal menu_p = new Menu_Principal();
 	private Cadastro_Usuario cadastro_Usuario = new Cadastro_Usuario();
 	
+	String teste;
 	
 	Stage p;
 	private BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 330, false, true),
@@ -121,8 +123,8 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 
 			try {
 
-				Controle_Usuario cu = new Controle_Usuario(txtemail, txtsenha);
-				Editar_Usuario editar_Usuario = new Editar_Usuario(txtemail);
+				Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
+				Editar_Usuario editar_Usuario = new Editar_Usuario(txtemail, txtnome, txtsenha);
 
 				if (txtemail.getText().trim().isEmpty() || txtsenha.getText().trim().isEmpty()) {
 
@@ -136,16 +138,17 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 						JOptionPane.showMessageDialog(null, "Seja Bem vindo, "
 								+ cu.consultar_U() + " , é sempre um prazer "+
 								"revelo ;)");
-				
+						
 						p.setHeight(360);
 						p.setMinHeight(330);
 						p.setMinWidth(480);
 						menu_p.start(p);
 						
-					}else{
+					}else if (cu.consultar_U() == "usuário não existe" ||
+							cu.consultar_Senha() == "senha não existe"){
 						
 						cont++;
-						System.out.println("");
+						System.out.println("TENTATIVA: " + cont);
 						
 						if (cont == 3){
 							
