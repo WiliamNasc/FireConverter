@@ -92,7 +92,7 @@ public class Novo_Formato_Video extends Application implements EventHandler<Acti
 		
 		if(event.getTarget() == btnEnviar) {
 			
-			Controle_Formato_V cf = new Controle_Formato_V(txFormato);
+			Controle_Formato_V cf = new Controle_Formato_V(txFormato, txtDescricao);
 			cf.inserirInfo_V();
 			Menu_Principal menu = new Menu_Principal();
 			try {

@@ -3,6 +3,14 @@ package model;
 public class Formato_A {
 	
 	private String extensao;
+	private String descricao;
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	private int cod_v;
 	
 	

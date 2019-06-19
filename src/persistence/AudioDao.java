@@ -42,7 +42,7 @@ public class AudioDao implements IAudioDao {
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, audio.getEndereco());
 		ps.setString(2, audio.getExtensao());
-		ps.setInt(3, audio.getCod_v());
+		ps.setInt(3, audio.getCod_a());
 		ps.execute();
 		ps.close();
 		
@@ -53,7 +53,7 @@ public class AudioDao implements IAudioDao {
 		
 		String sql = "DELETE AUDIO WHERE COD_A = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, audio.getCod_v());
+		ps.setInt(1, audio.getCod_a());
 		ps.execute();
 		ps.close();
 		
@@ -64,11 +64,11 @@ public class AudioDao implements IAudioDao {
 		
 		String sql = "SELECT COD_A,ENDERECO,EXTENSAO FROM AUDIO WHERE COD_A = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, audio.getCod_v());
+		ps.setInt(1, audio.getCod_a());
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
 			
-			audio.setCod_v(rs.getInt("COD_A"));
+			audio.setCod_a(rs.getInt("COD_A"));
 			audio.setEndereco(rs.getString("ENDERECO"));
 			audio.setExtensao(rs.getString("EXETENSAO"));
 		}

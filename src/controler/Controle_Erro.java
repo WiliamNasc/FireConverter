@@ -5,11 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import model.Erro;
 import persistence.ErroDao;
@@ -21,7 +19,7 @@ public class Controle_Erro implements IControle_E {
 
 	private ComboBox<String> cmb_erro;
 	private TextArea txtdescricao;
-	private TableView tblErro;
+	
 	
 	public Controle_Erro(ComboBox<String> cmb_erro) {
 
@@ -40,10 +38,7 @@ public class Controle_Erro implements IControle_E {
 
 	}
 	
-	public Controle_Erro(TableView tblErro) {
-		
-		this.tblErro = tblErro;
-	}
+	
 	
 	
 
@@ -67,24 +62,8 @@ public class Controle_Erro implements IControle_E {
 
 	@Override
 	public List<Erro> tabelaErro() throws SQLException {
+		return null;
 		
-		if (tblErro != null){
-			
-		
-			
-			
-			
-			ErroDao erroDao;
-			try {
-				erroDao = new ErroDao();
-				List<Erro> listErro = erroDao.consultar_e();
-				return listErro;
-			} catch (Exception e) {
-				throw new SQLException("Erro na consulta");
-			}
-		} else {
-			throw new SQLException("Erro no Banco de Dados");
-		}
 		
 	}
 

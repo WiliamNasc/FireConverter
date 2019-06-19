@@ -4,14 +4,14 @@ public class Video {
 	
 	private String endereco;
 	private String extensao;
-	private int cod_v;
+	private int cod_video;
 	
 	
 	public int getCod_v() {
-		return cod_v;
+		return cod_video;
 	}
-	public void setCod_v(int cod_v) {
-		this.cod_v = cod_v;
+	public void setCod_v(int cod_video) {
+		this.cod_video = cod_video;
 	}
 
 	public String getEndereco() {

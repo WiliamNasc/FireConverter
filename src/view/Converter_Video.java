@@ -2,6 +2,8 @@ package view;
 
 import java.io.File;
 
+import javax.swing.JOptionPane;
+
 import controler.Controle_Video;
 import it.sauronsoftware.jave.EncoderException;
 import javafx.application.Application;
@@ -113,7 +115,10 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 
 		if (event.getTarget() == btnSeleciona) {
 
-			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi"), new ExtensionFilter("MP4", "*.mp4"));
+			fc.getExtensionFilters().addAll(new ExtensionFilter("AVI", "*.avi")
+					, new ExtensionFilter("MP4", "*.mp4"),
+					new ExtensionFilter("WMV", "*.wmv"),
+					new ExtensionFilter("3GP", "*.3gp"));
 
 			arquivo = fc.showOpenDialog(null);
 			txtendereco.setText(arquivo.toString());
@@ -151,17 +156,18 @@ public class Converter_Video extends Application implements EventHandler<ActionE
 			try {
 				video.converter(cmbextensao.getValue().toString(), arq,new File(FileAux));
 			} catch (IllegalArgumentException | EncoderException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 			
 			try {
+				JOptionPane.showMessageDialog(null, "Arquivo Convertido, com Sucesso !!!");
 				p.setHeight(358.5);
 				p.setMinHeight(330);
 				p.setMinWidth(480);
 				menu.start(p);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			

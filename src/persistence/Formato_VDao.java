@@ -23,9 +23,10 @@ private Connection conexao;
 	@Override
 	public void inserir_v(Formato_V formato) throws SQLException {
 		
-		String sql = "INSERT INTO FORMATO_VIDEO (EXTENSAO) VALUES (?)";
+		String sql = "INSERT INTO FORMATO_VIDEO (EXTENSAO,DESCRICAO) VALUES (?,?)";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, formato.getExtensao());
+		ps.setString(2, formato.getDescricao());
 		ps.execute();
 		ps.close();
 	}

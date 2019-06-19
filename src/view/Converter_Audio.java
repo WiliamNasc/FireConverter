@@ -1,6 +1,9 @@
 package view;
 
 import java.io.File;
+
+import javax.swing.JOptionPane;
+
 import controler.Controle_Audio;
 import it.sauronsoftware.jave.EncoderException;
 import javafx.application.Application;
@@ -116,7 +119,10 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 		if (event.getTarget() == btnSeleciona) {
 
 			fc.getExtensionFilters().addAll(new ExtensionFilter("MP3", "*.mp3"),
-											new ExtensionFilter("MP4", "*.mp4"));
+											new ExtensionFilter("MP4", "*.mp4"),
+											new ExtensionFilter("Ogg", "*.ogg"),
+											new ExtensionFilter("WAV", "*.wav"),
+											new ExtensionFilter("WMA", "*.wma"));
 
 			arquivo = fc.showOpenDialog(null);
 			txt_Arquivo.setText(arquivo.toString());
@@ -151,6 +157,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			}
 			
 			
+			
 			try {
 				ca.converter(cmbextensao.getValue().toString(), arq,new File(FileAux));
 			} catch (IllegalArgumentException | EncoderException e1) {
@@ -159,6 +166,7 @@ public class Converter_Audio extends Application implements EventHandler<ActionE
 			}
 			
 			try {
+				JOptionPane.showMessageDialog(null, "Arquivo Convertido, com Sucesso !!!");
 				p.setHeight(358.5);
 				p.setMinHeight(330);
 				p.setMinWidth(480);

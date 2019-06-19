@@ -2,7 +2,6 @@ package persistence;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import model.Formato_V;
 import model.Video;
 

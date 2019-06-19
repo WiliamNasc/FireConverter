@@ -75,7 +75,7 @@ public class Relatar_Erro extends Application implements EventHandler<ActionEven
 
 		btnRelatar.setOnAction(this);
 
-		cmb_tipo.getItems().addAll("Áudio", "Vídeo");
+		cmb_tipo.getItems().addAll("Aúdio", "Vídeo");
 
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 

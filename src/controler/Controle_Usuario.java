@@ -96,6 +96,7 @@ public class Controle_Usuario implements IControle_U {
 		Usuario usuario = new Usuario();
 		usuario.setNome(txtnome.getText());
 		usuario.setEmail(txtemail.getText());
+		usuario.setSenha(txtsenha.getText());
 		usuarioDao.alterar_u(usuario);
 	}
 

@@ -23,7 +23,7 @@ public class ErroDao implements IErroDao {
 	@Override
 	public void inserir_e(Erro erro) throws SQLException {
 		
-		String sql = "INSERT INTO ERRO1 (CATEGORIA,DESCRICAO) VALUES (?,?)";
+		String sql = "INSERT INTO ERRO (CATEGORIA,DESCRICAO) VALUES (?,?)";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, erro.getCategoria());
 		ps.setString(2, erro.getDescricao());
@@ -81,7 +81,7 @@ public class ErroDao implements IErroDao {
 	public List<Erro> consultar_e() throws SQLException {
 		
 		List<Erro> listaErro = new ArrayList<Erro>();
-		String sql = "SELECT COD_ERRO,CATEGORIA,DESCRICAO FROM ERRO1";
+		String sql = "SELECT COD_ERRO,CATEGORIA,DESCRICAO FROM ERRO";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){

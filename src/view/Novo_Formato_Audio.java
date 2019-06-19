@@ -92,7 +92,7 @@ public class Novo_Formato_Audio extends Application implements EventHandler<Acti
 		
 		if(event.getTarget() == btnEnviar) {
 			
-			Controle_Formato_A ca = new Controle_Formato_A(txFormato);
+			Controle_Formato_A ca = new Controle_Formato_A(txFormato, txtDescricao);
 			ca.inserirInfo_A();
 			Menu_Principal menu = new Menu_Principal();
 			try {

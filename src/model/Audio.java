@@ -4,14 +4,14 @@ public class Audio {
 	
 	private String endereco;
 	private String extensao;
-	private int cod_v;
+	private int cod_audio;
 	
 	
-	public int getCod_v() {
-		return cod_v;
+	public int getCod_a() {
+		return cod_audio;
 	}
-	public void setCod_v(int cod_v) {
-		this.cod_v = cod_v;
+	public void setCod_a(int cod_audio) {
+		this.cod_audio = cod_audio;
 	}
 
 	public String getEndereco() {

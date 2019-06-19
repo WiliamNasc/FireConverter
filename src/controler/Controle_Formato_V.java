@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.Formato_V;
 import persistence.Formato_VDao;
@@ -14,22 +15,24 @@ import persistence.Formato_VDao;
 public class Controle_Formato_V implements IControle_F_V {
 
 	private ComboBox<Formato_V> cmb_extensao;
-	private TextField txtendereco;
+	private TextField txtformato;
+	private TextArea txtdescricao;
 
 	public Controle_Formato_V(ComboBox<Formato_V> cmbextensao) {
 
 		this.cmb_extensao = cmbextensao;
 	}
 
-	public Controle_Formato_V(TextField txtendereco) {
+	public Controle_Formato_V(TextField txtformato,TextArea txtdescricao) {
 
-		this.txtendereco = txtendereco;
+		this.txtformato = txtformato;
+		this. txtdescricao =  txtdescricao;
 	}
 
-	public Controle_Formato_V(ComboBox<Formato_V> cmb_extensao, TextField txtendereco) {
+	public Controle_Formato_V(ComboBox<Formato_V> cmb_extensao, TextField txtformato) {
 
 		this.cmb_extensao = cmb_extensao;
-		this.txtendereco = txtendereco;
+		this.txtformato = txtformato;
 
 	}
 
@@ -70,7 +73,8 @@ public class Controle_Formato_V implements IControle_F_V {
 		try {
 			Formato_VDao videodao = new Formato_VDao();
 			Formato_V video = new Formato_V();
-			video.setExtensao(txtendereco.getText());
+			video.setExtensao(txtformato.getText());
+			video.setDescricao(txtdescricao.getText());
 			videodao.inserir_v(video);
 		} catch (ClassNotFoundException | SQLException e) {
 			

@@ -4,6 +4,8 @@ package view;
 
 
 
+import javax.swing.JOptionPane;
+
 import controler.Controle_Usuario;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -43,13 +45,13 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	
 	
 	private TextField txtnome = new TextField();
-	private TextField txtnome1 = new TextField();
+	
 
 	private TextField txtemail = new TextField();
-	private TextField txtemail1 = new TextField();
+	
 
 	private PasswordField txtsenha = new PasswordField();
-	private PasswordField txtsenha1 = new PasswordField();
+	
 	
 	
 	Stage p;
@@ -57,17 +59,7 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 	BackgroundImage myBI = new BackgroundImage(new Image("/img/fireconverter.jpg", 490, 340, false, true),
 			BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
-	public Editar_Usuario(TextField txtemail1, TextField txtnome1, PasswordField txtsenha1) {
-		
-		this.txtemail1 = txtemail1;
-		this.txtnome1 = txtnome1;
-		this.txtsenha1 = txtsenha1;
-	}
 	
-	public Editar_Usuario(TextField txtemail1,PasswordField txtsenha1) {
-		this.txtemail1 = txtemail1;
-		this.txtsenha1 =  txtsenha1;
-	}
 
 	public Editar_Usuario() {
 
@@ -105,13 +97,13 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		txtemail.setTranslateY(80);
 		txtemail.setTranslateX(135);
 		txtemail.setMaxWidth(200);
-		txtemail.setText(txtemail1.getText());
+		
 
 		txtsenha.setFocusTraversable(false);
 		txtsenha.setTranslateY(110);
 		txtsenha.setTranslateX(135);
 		txtsenha.setMaxWidth(200);
-		txtsenha.setText(txtsenha1.getText());
+		
 
 		btnAtualizar.setFocusTraversable(false);
 		btnAtualizar.setTranslateY(160);
@@ -136,8 +128,8 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		lblTitulo1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
 
 		txtnome.setPromptText("Insira o seu nome");
-		//txtemail.setPromptText("Insira o seu email");
-		//txtsenha.setPromptText("Insira a sua senha");
+		txtemail.setPromptText("Insira o seu email");
+		txtsenha.setPromptText("Insira a sua senha");
 		
 		
 		lblTitulo1.setFont(Font.font("Righteous",
@@ -181,8 +173,14 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		if (event.getTarget() == btnAtualizar){
 			
 			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
+			Menu_Principal menu = new Menu_Principal();
 			try {
 				cu.alterarInfo_U();
+				JOptionPane.showMessageDialog(null, "Email ou Nome, atualizados com sucesso !!!");
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -192,9 +190,14 @@ public class Editar_Usuario extends Application implements EventHandler<ActionEv
 		if (event.getTarget() == btnDeletar){
 			
 			Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
-			
+			Menu_Principal menu = new Menu_Principal();
 			try {
 				cu.deletar_U();
+				JOptionPane.showMessageDialog(null, "Dados de usuário, deletados com sucesso !!!");
+				p.setHeight(358.5);
+				p.setMinHeight(330);
+				p.setMinWidth(480);
+				menu.start(p);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

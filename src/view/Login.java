@@ -124,7 +124,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			try {
 
 				Controle_Usuario cu = new Controle_Usuario(txtnome, txtemail, txtsenha);
-				Editar_Usuario editar_Usuario = new Editar_Usuario(txtemail, txtnome, txtsenha);
+				
 
 				if (txtemail.getText().trim().isEmpty() || txtsenha.getText().trim().isEmpty()) {
 
@@ -158,7 +158,7 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 							p.setHeight(365);
 							p.setMinHeight(330);
 							p.setMinWidth(480);
-							editar_Usuario.start(p);
+							cadastro_Usuario.start(p);
 						}
 					}
 

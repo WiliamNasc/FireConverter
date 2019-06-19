@@ -9,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -49,9 +47,9 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private MenuItem item5 = new MenuItem("Novo Formato de vídeo");
 	private MenuItem item6 = new MenuItem("Novo formato de aúdio");
 	private MenuItem item7 = new MenuItem("Biblioteca de erros");
-	private MenuItem item8 = new MenuItem("Convertidos");
-	private MenuItem item9 = new MenuItem("Editar usuário");
-	private MenuItem item10 = new MenuItem("Logoff");
+	private MenuItem item8 = new MenuItem("Editar usuário");
+	private MenuItem item9 = new MenuItem("Logoff");
+	
 	
 	private Converter_Video converte_v = new Converter_Video();
 	private Converter_Audio converte_a = new Converter_Audio();
@@ -60,12 +58,9 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 	private Novo_Formato_Video novo_arq_v = new Novo_Formato_Video();
 	private Novo_Formato_Audio novo_arq_a = new Novo_Formato_Audio();
 	private Biblioteca_de_Erros bibli_erros = new Biblioteca_de_Erros();
-	private Convertidos convertidos = new Convertidos();
 	private Editar_Usuario editar_user = new Editar_Usuario();
 	
-	private TextField txtnome1 = new TextField();
-	private TextField txtemail1 = new TextField();
-	private PasswordField txtsenha1 = new PasswordField();
+
 	
 	private BackgroundImage myBI= new BackgroundImage(new Image("/img/fireconverter.jpg",490,330,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -75,12 +70,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 	}
 	
-	public Menu_Principal(TextField txtemail1, TextField txtnome1, PasswordField txtsenha1) {
-		
-		this.txtemail1 = txtemail1;
-		this.txtnome1 = txtnome1;
-		this.txtsenha1 = txtsenha1;
-	}
+	
 	
 	@Override
 	public void start(Stage palco) throws Exception {
@@ -198,24 +188,10 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		
 		item8.setOnAction(e -> {
 			try {
-				palco.setHeight(355.5);
-				palco.setMinHeight(330);
-				palco.setMinWidth(480);
-				convertidos.start(palco);
-			} catch (Exception e1) {
-				
-				e1.printStackTrace();
-			}
-		});
-		
-		
-		item9.setOnAction(e -> {
-			try {
 				palco.setHeight(365);
 				palco.setMinHeight(330);
 				palco.setMinWidth(480);
-				txtemail1.setText("Rola");
-				Editar_Usuario ed = new Editar_Usuario(txtemail1, txtnome1, txtsenha1);
+				//Editar_Usuario ed = new Editar_Usuario(txtemail1, txtnome1, txtsenha1);
 				editar_user.start(palco);
 			} catch (Exception e1) {
 				
@@ -225,7 +201,7 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 
 		Login log = new Login();
 		
-		item10.setOnAction(e -> {
+		item9.setOnAction(e -> {
 			try {
 				palco.setHeight(357.5);
 				palco.setMinHeight(330);
@@ -247,11 +223,11 @@ public class Menu_Principal extends Application implements EventHandler<ActionEv
 		insere_menu.getItems().add(item5);
 		
 		consulta_menu.getItems().add(item7);
-		consulta_menu.getItems().add(item8);
 		
-		editar_menu.getItems().add(item9);
 		
-		sair_menu.getItems().add(item10);
+		editar_menu.getItems().add(item8);
+		
+		sair_menu.getItems().add(item9);
 		
 		
 	    menubar.getMenus().add(convert_menu);

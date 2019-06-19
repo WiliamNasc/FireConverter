@@ -24,9 +24,10 @@ private Connection conexao;
 	@Override
 	public void inserir_v(Formato_A formato) throws SQLException {
 		
-		String sql = "INSERT INTO FORMATO_AUDIO (EXTENSAO) VALUES (?)";
+		String sql = "INSERT INTO FORMATO_AUDIO (EXTENSAO,DESCRICAO) VALUES (?,?)";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, formato.getExtensao());
+		ps.setString(2, formato.getDescricao());
 		ps.execute();
 		ps.close();
 		

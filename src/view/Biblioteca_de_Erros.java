@@ -3,10 +3,6 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.table.TableModel;
-
-import controler.Controle_Erro;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

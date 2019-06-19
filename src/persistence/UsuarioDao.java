@@ -35,10 +35,11 @@ public class UsuarioDao implements IUserDao {
 	@Override
 	public void alterar_u(Usuario user) throws SQLException {
 
-		String sql = "UPDATE USUARIO SET NOME = ? WHERE EMAIL = ?";
+		String sql = "UPDATE USUARIO SET NOME = ?,EMAIL = ? WHERE SENHA = ?";
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setString(1, user.getNome());
 		ps.setString(2, user.getEmail());
+		ps.setString(3, user.getSenha());
 		ps.execute();
 		ps.close();
 
